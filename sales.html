@@ -1,0 +1,1713 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Sales Management - Inventory Management System"
+    >
+
+    <title>Sales | Inventory Management System</title>
+
+
+    <!-- GLOBAL CSS -->
+
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
+
+    <!-- TABLE CSS -->
+
+    <link
+        rel="stylesheet"
+        href="../css/tables.css"
+    >
+
+    <!-- FORMS CSS -->
+
+    <link
+        rel="stylesheet"
+        href="../css/forms.css"
+    >
+
+    <!-- RESPONSIVE CSS -->
+
+    <link
+        rel="stylesheet"
+        href="../css/responsive.css"
+    >
+
+</head>
+
+
+<body onload="checkAuthentication()">
+
+
+    <!-- =========================================
+         APPLICATION CONTAINER
+    ========================================== -->
+
+    <div class="app-container">
+
+
+        <!-- =========================================
+             SIDEBAR
+        ========================================== -->
+
+        <aside
+            class="sidebar"
+            id="sidebar"
+        >
+
+            <!-- LOGO -->
+
+            <div class="sidebar-logo">
+
+                <div class="sidebar-logo-icon">
+                    IMS
+                </div>
+
+                <div class="sidebar-logo-text">
+
+                    <h2>
+                        InventoryPro
+                    </h2>
+
+                    <span>
+                        Management System
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- NAVIGATION -->
+
+            <nav class="sidebar-navigation">
+
+
+                <!-- MAIN -->
+
+                <div class="nav-section">
+
+                    <p class="nav-section-title">
+                        MAIN
+                    </p>
+
+
+                    <a
+                        href="dashboard.html"
+                        class="nav-link"
+                    >
+
+                        <span class="nav-icon">
+                            📊
+                        </span>
+
+                        <span>
+                            Dashboard
+                        </span>
+
+                    </a>
+
+
+                    <a
+                        href="products.html"
+                        class="nav-link"
+                    >
+
+                        <span class="nav-icon">
+                            📦
+                        </span>
+
+                        <span>
+                            Products
+                        </span>
+
+                    </a>
+
+
+                    <a
+                        href="categories.html"
+                        class="nav-link"
+                    >
+
+                        <span class="nav-icon">
+                            🏷️
+                        </span>
+
+                        <span>
+                            Categories
+                        </span>
+
+                    </a>
+
+                </div>
+
+
+                <!-- TRANSACTIONS -->
+
+                <div class="nav-section">
+
+                    <p class="nav-section-title">
+                        TRANSACTIONS
+                    </p>
+
+
+                    <a
+                        href="sales.html"
+                        class="nav-link active"
+                    >
+
+                        <span class="nav-icon">
+                            💰
+                        </span>
+
+                        <span>
+                            Sales
+                        </span>
+
+                    </a>
+
+
+                    <a
+                        href="purchases.html"
+                        class="nav-link"
+                    >
+
+                        <span class="nav-icon">
+                            🛒
+                        </span>
+
+                        <span>
+                            Purchases
+                        </span>
+
+                    </a>
+
+                </div>
+
+
+                <!-- MANAGEMENT -->
+
+                <div class="nav-section">
+
+                    <p class="nav-section-title">
+                        MANAGEMENT
+                    </p>
+
+
+                    <a
+                        href="suppliers.html"
+                        class="nav-link"
+                    >
+
+                        <span class="nav-icon">
+                            🚚
+                        </span>
+
+                        <span>
+                            Suppliers
+                        </span>
+
+                    </a>
+
+
+                    <a
+                        href="customers.html"
+                        class="nav-link"
+                    >
+
+                        <span class="nav-icon">
+                            👥
+                        </span>
+
+                        <span>
+                            Customers
+                        </span>
+
+                    </a>
+
+                </div>
+
+
+                <!-- ANALYTICS -->
+
+                <div class="nav-section">
+
+                    <p class="nav-section-title">
+                        ANALYTICS
+                    </p>
+
+
+                    <a
+                        href="reports.html"
+                        class="nav-link"
+                    >
+
+                        <span class="nav-icon">
+                            📈
+                        </span>
+
+                        <span>
+                            Reports
+                        </span>
+
+                    </a>
+
+                </div>
+
+
+                <!-- SYSTEM -->
+
+                <div class="nav-section">
+
+                    <p class="nav-section-title">
+                        SYSTEM
+                    </p>
+
+
+                    <a
+                        href="settings.html"
+                        class="nav-link"
+                    >
+
+                        <span class="nav-icon">
+                            ⚙️
+                        </span>
+
+                        <span>
+                            Settings
+                        </span>
+
+                    </a>
+
+                </div>
+
+            </nav>
+
+
+            <!-- USER -->
+
+            <div class="sidebar-user">
+
+                <div class="sidebar-user-avatar">
+                    A
+                </div>
+
+                <div class="sidebar-user-info">
+
+                    <strong id="sidebarUserName">
+                        Admin
+                    </strong>
+
+                    <span>
+                        Administrator
+                    </span>
+
+                </div>
+
+                <button
+                    class="sidebar-logout"
+                    onclick="logout()"
+                    title="Logout"
+                >
+                    ↪
+                </button>
+
+            </div>
+
+        </aside>
+
+
+
+        <!-- =========================================
+             MAIN CONTENT
+        ========================================== -->
+
+        <main class="main-content">
+
+
+            <!-- =====================================
+                 TOPBAR
+            ====================================== -->
+
+            <header class="topbar">
+
+
+                <button
+                    class="mobile-menu-button"
+                    id="mobileMenuButton"
+                    aria-label="Open menu"
+                >
+                    ☰
+                </button>
+
+
+                <div class="topbar-title">
+
+                    <h1>
+                        Sales
+                    </h1>
+
+                    <p>
+                        Manage sales and customer transactions
+                    </p>
+
+                </div>
+
+
+                <div class="topbar-actions">
+
+
+                    <!-- SEARCH -->
+
+                    <div class="global-search">
+
+                        <span>
+                            🔍
+                        </span>
+
+                        <input
+                            type="search"
+                            id="globalSearch"
+                            placeholder="Search..."
+                        >
+
+                    </div>
+
+
+                    <!-- NOTIFICATIONS -->
+
+                    <button
+                        class="topbar-icon-button"
+                        id="notificationButton"
+                        title="Notifications"
+                    >
+
+                        🔔
+
+                        <span
+                            class="notification-badge"
+                            id="notificationCount"
+                        >
+                            0
+                        </span>
+
+                    </button>
+
+
+                    <!-- USER -->
+
+                    <div class="topbar-user">
+
+                        <div class="topbar-avatar">
+                            A
+                        </div>
+
+                        <div class="topbar-user-info">
+
+                            <strong id="topbarUserName">
+                                Admin
+                            </strong>
+
+                            <span>
+                                Administrator
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </header>
+
+
+
+            <!-- =====================================
+                 PAGE CONTENT
+            ====================================== -->
+
+            <section class="page-content">
+
+
+                <!-- =================================
+                     PAGE HEADER
+                ================================== -->
+
+                <div class="page-header">
+
+                    <div class="page-header-text">
+
+                        <h2>
+                            Sales Management
+                        </h2>
+
+                        <p>
+                            Create, track and manage
+                            customer sales.
+                        </p>
+
+                    </div>
+
+
+                    <div class="page-header-actions">
+
+                        <button
+                            type="button"
+                            class="secondary-button"
+                            id="exportSalesButton"
+                        >
+
+                            ↓ Export
+
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="primary-action-button"
+                            id="newSaleButton"
+                        >
+
+                            + New Sale
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =================================
+                     SALES SUMMARY
+                ================================== -->
+
+                <div class="product-summary-grid">
+
+
+                    <!-- TODAY'S SALES -->
+
+                    <div class="summary-card">
+
+                        <div class="summary-icon">
+                            💰
+                        </div>
+
+                        <div>
+
+                            <span>
+                                Today's Sales
+                            </span>
+
+                            <strong id="todaySales">
+                                ₹0.00
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- TOTAL SALES -->
+
+                    <div class="summary-card">
+
+                        <div class="summary-icon">
+                            📈
+                        </div>
+
+                        <div>
+
+                            <span>
+                                Total Revenue
+                            </span>
+
+                            <strong id="totalSalesRevenue">
+                                ₹0.00
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- TOTAL ORDERS -->
+
+                    <div class="summary-card">
+
+                        <div class="summary-icon">
+                            🧾
+                        </div>
+
+                        <div>
+
+                            <span>
+                                Total Orders
+                            </span>
+
+                            <strong id="totalOrders">
+                                0
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- AVERAGE ORDER -->
+
+                    <div class="summary-card">
+
+                        <div class="summary-icon">
+                            💳
+                        </div>
+
+                        <div>
+
+                            <span>
+                                Average Order
+                            </span>
+
+                            <strong id="averageOrderValue">
+                                ₹0.00
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =================================
+                     SALES TABLE CARD
+                ================================== -->
+
+                <div class="dashboard-card">
+
+
+                    <!-- TOOLBAR -->
+
+                    <div class="products-toolbar">
+
+
+                        <!-- SEARCH -->
+
+                        <div class="product-search">
+
+                            <span>
+                                🔍
+                            </span>
+
+                            <input
+                                type="search"
+                                id="salesSearch"
+                                placeholder="Search invoice, customer..."
+                            >
+
+                        </div>
+
+
+                        <!-- DATE FILTER -->
+
+                        <div class="filter-control">
+
+                            <label for="salesDateFilter">
+                                Date
+                            </label>
+
+                            <select
+                                id="salesDateFilter"
+                            >
+
+                                <option value="all">
+                                    All Dates
+                                </option>
+
+                                <option value="today">
+                                    Today
+                                </option>
+
+                                <option value="week">
+                                    This Week
+                                </option>
+
+                                <option value="month">
+                                    This Month
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <!-- PAYMENT FILTER -->
+
+                        <div class="filter-control">
+
+                            <label for="paymentFilter">
+                                Payment
+                            </label>
+
+                            <select
+                                id="paymentFilter"
+                            >
+
+                                <option value="all">
+                                    All Methods
+                                </option>
+
+                                <option value="cash">
+                                    Cash
+                                </option>
+
+                                <option value="upi">
+                                    UPI
+                                </option>
+
+                                <option value="card">
+                                    Card
+                                </option>
+
+                                <option value="bank">
+                                    Bank Transfer
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <!-- STATUS FILTER -->
+
+                        <div class="filter-control">
+
+                            <label for="saleStatusFilter">
+                                Status
+                            </label>
+
+                            <select
+                                id="saleStatusFilter"
+                            >
+
+                                <option value="all">
+                                    All Status
+                                </option>
+
+                                <option value="completed">
+                                    Completed
+                                </option>
+
+                                <option value="pending">
+                                    Pending
+                                </option>
+
+                                <option value="cancelled">
+                                    Cancelled
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <!-- RESET -->
+
+                        <button
+                            type="button"
+                            class="reset-filter-button"
+                            id="resetSaleFilters"
+                        >
+                            Reset
+                        </button>
+
+                    </div>
+
+
+
+                    <!-- SALES TABLE -->
+
+                    <div class="table-wrapper">
+
+                        <table
+                            class="data-table"
+                            id="salesTable"
+                        >
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>
+                                        Invoice
+                                    </th>
+
+                                    <th>
+                                        Customer
+                                    </th>
+
+                                    <th>
+                                        Items
+                                    </th>
+
+                                    <th>
+                                        Date
+                                    </th>
+
+                                    <th>
+                                        Payment
+                                    </th>
+
+                                    <th>
+                                        Amount
+                                    </th>
+
+                                    <th>
+                                        Status
+                                    </th>
+
+                                    <th>
+                                        Actions
+                                    </th>
+
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody id="salesTableBody">
+
+                                <tr
+                                    id="emptySalesRow"
+                                >
+
+                                    <td
+                                        colspan="8"
+                                        class="empty-table"
+                                    >
+
+                                        <div class="table-empty-state">
+
+                                            <div class="empty-state-icon">
+                                                💰
+                                            </div>
+
+                                            <h3>
+                                                No Sales Found
+                                            </h3>
+
+                                            <p>
+                                                No sales transactions
+                                                have been recorded yet.
+                                            </p>
+
+                                            <button
+                                                type="button"
+                                                class="primary-action-button"
+                                                id="emptyNewSaleButton"
+                                            >
+                                                + Create First Sale
+                                            </button>
+
+                                        </div>
+
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+
+
+                    <!-- TABLE FOOTER -->
+
+                    <div class="table-footer">
+
+                        <div
+                            class="table-results"
+                            id="salesTableResults"
+                        >
+                            Showing 0 sales
+                        </div>
+
+
+                        <div class="pagination">
+
+                            <button
+                                type="button"
+                                class="pagination-button"
+                                id="previousSalesPage"
+                                disabled
+                            >
+                                ←
+                            </button>
+
+
+                            <div
+                                id="salesPaginationNumbers"
+                                class="pagination-numbers"
+                            >
+
+                                <button
+                                    type="button"
+                                    class="pagination-number active"
+                                >
+                                    1
+                                </button>
+
+                            </div>
+
+
+                            <button
+                                type="button"
+                                class="pagination-button"
+                                id="nextSalesPage"
+                                disabled
+                            >
+                                →
+                            </button>
+
+                        </div>
+
+
+                        <div class="items-per-page">
+
+                            <label for="salesItemsPerPage">
+                                Show
+                            </label>
+
+                            <select id="salesItemsPerPage">
+
+                                <option value="10">
+                                    10
+                                </option>
+
+                                <option value="25">
+                                    25
+                                </option>
+
+                                <option value="50">
+                                    50
+                                </option>
+
+                            </select>
+
+                            <span>
+                                per page
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =================================
+                     SALES INSIGHTS
+                ================================== -->
+
+                <div class="dashboard-lower-grid">
+
+
+                    <!-- TOP PRODUCTS -->
+
+                    <div class="dashboard-card">
+
+                        <div class="card-header">
+
+                            <div>
+
+                                <h3>
+                                    Top Selling Products
+                                </h3>
+
+                                <p>
+                                    Products generating
+                                    the most sales
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div
+                            class="low-stock-list"
+                            id="topSellingProducts"
+                        >
+
+                            <div class="empty-state">
+
+                                <div class="empty-icon">
+                                    📊
+                                </div>
+
+                                <p>
+                                    No sales data available.
+                                </p>
+
+                                <span>
+                                    Start recording sales
+                                    to see insights.
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- PAYMENT METHODS -->
+
+                    <div class="dashboard-card">
+
+                        <div class="card-header">
+
+                            <div>
+
+                                <h3>
+                                    Payment Methods
+                                </h3>
+
+                                <p>
+                                    Sales by payment method
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div
+                            class="payment-method-list"
+                            id="paymentMethodList"
+                        >
+
+                            <div class="payment-method-item">
+
+                                <div class="payment-method-name">
+
+                                    <span>
+                                        💵
+                                    </span>
+
+                                    Cash
+
+                                </div>
+
+                                <strong>
+                                    ₹0.00
+                                </strong>
+
+                            </div>
+
+
+                            <div class="payment-method-item">
+
+                                <div class="payment-method-name">
+
+                                    <span>
+                                        📱
+                                    </span>
+
+                                    UPI
+
+                                </div>
+
+                                <strong>
+                                    ₹0.00
+                                </strong>
+
+                            </div>
+
+
+                            <div class="payment-method-item">
+
+                                <div class="payment-method-name">
+
+                                    <span>
+                                        💳
+                                    </span>
+
+                                    Card
+
+                                </div>
+
+                                <strong>
+                                    ₹0.00
+                                </strong>
+
+                            </div>
+
+
+                            <div class="payment-method-item">
+
+                                <div class="payment-method-name">
+
+                                    <span>
+                                        🏦
+                                    </span>
+
+                                    Bank Transfer
+
+                                </div>
+
+                                <strong>
+                                    ₹0.00
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+
+    <!-- =========================================
+         NEW SALE MODAL
+    ========================================== -->
+
+    <div
+        class="modal-overlay"
+        id="saleModal"
+        style="display: none;"
+    >
+
+        <div class="modal large-modal">
+
+
+            <!-- MODAL HEADER -->
+
+            <div class="modal-header">
+
+                <div>
+
+                    <h2>
+                        Create New Sale
+                    </h2>
+
+                    <p>
+                        Record a new customer transaction.
+                    </p>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="modal-close"
+                    id="closeSaleModal"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <!-- SALE FORM -->
+
+            <form id="saleForm">
+
+
+                <div class="modal-body">
+
+
+                    <!-- =================================
+                         CUSTOMER & INVOICE
+                    ================================== -->
+
+                    <div class="sale-form-section">
+
+                        <h3>
+                            Sale Information
+                        </h3>
+
+
+                        <div class="form-grid">
+
+
+                            <!-- INVOICE -->
+
+                            <div class="form-group">
+
+                                <label for="invoiceNumber">
+                                    Invoice Number
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="invoiceNumber"
+                                    name="invoiceNumber"
+                                    readonly
+                                >
+
+                            </div>
+
+
+                            <!-- DATE -->
+
+                            <div class="form-group">
+
+                                <label for="saleDate">
+
+                                    Sale Date
+
+                                    <span class="required">
+                                        *
+                                    </span>
+
+                                </label>
+
+                                <input
+                                    type="date"
+                                    id="saleDate"
+                                    name="saleDate"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <!-- CUSTOMER -->
+
+                            <div class="form-group">
+
+                                <label for="saleCustomer">
+
+                                    Customer
+
+                                    <span class="required">
+                                        *
+                                    </span>
+
+                                </label>
+
+                                <select
+                                    id="saleCustomer"
+                                    name="saleCustomer"
+                                    required
+                                >
+
+                                    <option value="">
+                                        Select Customer
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                            <!-- PAYMENT -->
+
+                            <div class="form-group">
+
+                                <label for="salePayment">
+
+                                    Payment Method
+
+                                    <span class="required">
+                                        *
+                                    </span>
+
+                                </label>
+
+                                <select
+                                    id="salePayment"
+                                    name="salePayment"
+                                    required
+                                >
+
+                                    <option value="">
+                                        Select Payment Method
+                                    </option>
+
+                                    <option value="cash">
+                                        Cash
+                                    </option>
+
+                                    <option value="upi">
+                                        UPI
+                                    </option>
+
+                                    <option value="card">
+                                        Card
+                                    </option>
+
+                                    <option value="bank">
+                                        Bank Transfer
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- =================================
+                         SALE ITEMS
+                    ================================== -->
+
+                    <div class="sale-form-section">
+
+                        <div class="sale-section-header">
+
+                            <div>
+
+                                <h3>
+                                    Products
+                                </h3>
+
+                                <p>
+                                    Add products to this sale.
+                                </p>
+
+                            </div>
+
+
+                            <button
+                                type="button"
+                                class="secondary-button"
+                                id="addSaleItem"
+                            >
+                                + Add Product
+                            </button>
+
+                        </div>
+
+
+                        <!-- SALE ITEMS CONTAINER -->
+
+                        <div
+                            id="saleItemsContainer"
+                            class="sale-items-container"
+                        >
+
+                            <!-- ITEM ROW WILL BE ADDED BY JS -->
+
+                            <div
+                                class="sale-item-row"
+                                data-item-index="0"
+                            >
+
+
+                                <div class="form-group">
+
+                                    <label>
+                                        Product
+                                    </label>
+
+                                    <select
+                                        class="sale-product"
+                                        name="saleProduct[]"
+                                        required
+                                    >
+
+                                        <option value="">
+                                            Select Product
+                                        </option>
+
+                                    </select>
+
+                                </div>
+
+
+                                <div class="form-group">
+
+                                    <label>
+                                        Quantity
+                                    </label>
+
+                                    <input
+                                        type="number"
+                                        class="sale-quantity"
+                                        name="saleQuantity[]"
+                                        min="1"
+                                        value="1"
+                                        required
+                                    >
+
+                                </div>
+
+
+                                <div class="form-group">
+
+                                    <label>
+                                        Unit Price
+                                    </label>
+
+                                    <div class="currency-input">
+
+                                        <span>
+                                            ₹
+                                        </span>
+
+                                        <input
+                                            type="number"
+                                            class="sale-price"
+                                            name="salePrice[]"
+                                            min="0"
+                                            step="0.01"
+                                            value="0"
+                                            required
+                                        >
+
+                                    </div>
+
+                                </div>
+
+
+                                <div class="form-group">
+
+                                    <label>
+                                        Total
+                                    </label>
+
+                                    <div class="item-total">
+                                        ₹0.00
+                                    </div>
+
+                                </div>
+
+
+                                <button
+                                    type="button"
+                                    class="remove-sale-item"
+                                    title="Remove product"
+                                    disabled
+                                >
+                                    ×
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- =================================
+                         SALE TOTALS
+                    ================================== -->
+
+                    <div class="sale-total-section">
+
+
+                        <div class="sale-total-row">
+
+                            <span>
+                                Subtotal
+                            </span>
+
+                            <strong id="saleSubtotal">
+                                ₹0.00
+                            </strong>
+
+                        </div>
+
+
+                        <div class="sale-total-row">
+
+                            <span>
+                                Discount
+                            </span>
+
+                            <div class="discount-input">
+
+                                <input
+                                    type="number"
+                                    id="saleDiscount"
+                                    min="0"
+                                    value="0"
+                                    step="0.01"
+                                >
+
+                                <span>
+                                    ₹
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="sale-total-row">
+
+                            <span>
+                                Tax
+                            </span>
+
+                            <strong id="saleTax">
+                                ₹0.00
+                            </strong>
+
+                        </div>
+
+
+                        <div class="sale-total-row grand-total">
+
+                            <span>
+                                Grand Total
+                            </span>
+
+                            <strong id="saleGrandTotal">
+                                ₹0.00
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- NOTES -->
+
+                    <div class="form-group">
+
+                        <label for="saleNotes">
+                            Notes
+                        </label>
+
+                        <textarea
+                            id="saleNotes"
+                            name="saleNotes"
+                            rows="3"
+                            placeholder="Optional notes about this sale..."
+                        ></textarea>
+
+                    </div>
+
+                </div>
+
+
+                <!-- MODAL FOOTER -->
+
+                <div class="modal-footer">
+
+                    <button
+                        type="button"
+                        class="secondary-button"
+                        id="cancelSale"
+                    >
+                        Cancel
+                    </button>
+
+
+                    <button
+                        type="submit"
+                        class="primary-action-button"
+                    >
+                        ✓ Complete Sale
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================================
+         VIEW SALE MODAL
+    ========================================== -->
+
+    <div
+        class="modal-overlay"
+        id="viewSaleModal"
+        style="display: none;"
+    >
+
+        <div class="modal large-modal">
+
+
+            <div class="modal-header">
+
+                <div>
+
+                    <h2>
+                        Sale Details
+                    </h2>
+
+                    <p>
+                        Complete transaction information.
+                    </p>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="modal-close"
+                    id="closeViewSaleModal"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <div
+                class="modal-body"
+                id="saleDetailsContent"
+            >
+
+                <!-- Details generated by sales.js -->
+
+            </div>
+
+
+            <div class="modal-footer">
+
+                <button
+                    type="button"
+                    class="secondary-button"
+                    id="closeSaleDetails"
+                >
+                    Close
+                </button>
+
+
+                <button
+                    type="button"
+                    class="secondary-button"
+                    id="printSale"
+                >
+                    🖨 Print Invoice
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================================
+         DELETE SALE MODAL
+    ========================================== -->
+
+    <div
+        class="modal-overlay"
+        id="deleteSaleModal"
+        style="display: none;"
+    >
+
+        <div class="modal small-modal">
+
+
+            <div class="modal-header">
+
+                <h2>
+                    Cancel Sale
+                </h2>
+
+                <button
+                    type="button"
+                    class="modal-close"
+                    id="closeDeleteSaleModal"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <div class="modal-body delete-confirmation">
+
+                <div class="delete-icon">
+                    ⚠️
+                </div>
+
+                <h3>
+                    Cancel this transaction?
+                </h3>
+
+                <p>
+                    Cancelling a sale may restore the
+                    sold quantities back to inventory.
+                </p>
+
+            </div>
+
+
+            <div class="modal-footer">
+
+                <button
+                    type="button"
+                    class="secondary-button"
+                    id="cancelSaleDeletion"
+                >
+                    Keep Sale
+                </button>
+
+
+                <button
+                    type="button"
+                    class="danger-button"
+                    id="confirmSaleDeletion"
+                >
+                    Cancel Sale
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================================
+         JAVASCRIPT
+    ========================================== -->
+
+    <script src="../js/storage.js"></script>
+
+    <script src="../js/app.js"></script>
+
+    <script src="../js/sales.js"></script>
+
+
+</body>
+
+</html>

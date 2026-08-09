@@ -1,0 +1,1251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Inventory Management System Dashboard"
+    >
+
+    <title>Dashboard | Inventory Management System</title>
+
+
+    <!-- CSS -->
+
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../css/dashboard.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../css/responsive.css"
+    >
+
+</head>
+
+
+<body onload="checkAuthentication()">
+
+
+    <!-- =========================================
+         APPLICATION CONTAINER
+    ========================================== -->
+
+    <div class="app-container">
+
+
+        <!-- =========================================
+             SIDEBAR
+        ========================================== -->
+
+        <aside class="sidebar" id="sidebar">
+
+
+            <!-- LOGO -->
+
+            <div class="sidebar-logo">
+
+                <div class="sidebar-logo-icon">
+                    IMS
+                </div>
+
+                <div class="sidebar-logo-text">
+
+                    <h2>
+                        InventoryPro
+                    </h2>
+
+                    <span>
+                        Management System
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- NAVIGATION -->
+
+            <nav class="sidebar-navigation">
+
+
+                <!-- MAIN -->
+
+                <div class="nav-section">
+
+                    <p class="nav-section-title">
+                        MAIN
+                    </p>
+
+
+                    <a
+                        href="dashboard.html"
+                        class="nav-link active"
+                    >
+
+                        <span class="nav-icon">
+                            📊
+                        </span>
+
+                        <span>
+                            Dashboard
+                        </span>
+
+                    </a>
+
+
+                    <a
+                        href="products.html"
+                        class="nav-link"
+                    >
+
+                        <span class="nav-icon">
+                            📦
+                        </span>
+
+                        <span>
+                            Products
+                        </span>
+
+                    </a>
+
+
+                    <a
+                        href="categories.html"
+                        class="nav-link"
+                    >
+
+                        <span class="nav-icon">
+                            🏷️
+                        </span>
+
+                        <span>
+                            Categories
+                        </span>
+
+                    </a>
+
+                </div>
+
+
+
+                <!-- TRANSACTIONS -->
+
+                <div class="nav-section">
+
+                    <p class="nav-section-title">
+                        TRANSACTIONS
+                    </p>
+
+
+                    <a
+                        href="sales.html"
+                        class="nav-link"
+                    >
+
+                        <span class="nav-icon">
+                            💰
+                        </span>
+
+                        <span>
+                            Sales
+                        </span>
+
+                    </a>
+
+
+                    <a
+                        href="purchases.html"
+                        class="nav-link"
+                    >
+
+                        <span class="nav-icon">
+                            🛒
+                        </span>
+
+                        <span>
+                            Purchases
+                        </span>
+
+                    </a>
+
+                </div>
+
+
+
+                <!-- MANAGEMENT -->
+
+                <div class="nav-section">
+
+                    <p class="nav-section-title">
+                        MANAGEMENT
+                    </p>
+
+
+                    <a
+                        href="suppliers.html"
+                        class="nav-link"
+                    >
+
+                        <span class="nav-icon">
+                            🚚
+                        </span>
+
+                        <span>
+                            Suppliers
+                        </span>
+
+                    </a>
+
+
+                    <a
+                        href="customers.html"
+                        class="nav-link"
+                    >
+
+                        <span class="nav-icon">
+                            👥
+                        </span>
+
+                        <span>
+                            Customers
+                        </span>
+
+                    </a>
+
+                </div>
+
+
+
+                <!-- ANALYTICS -->
+
+                <div class="nav-section">
+
+                    <p class="nav-section-title">
+                        ANALYTICS
+                    </p>
+
+
+                    <a
+                        href="reports.html"
+                        class="nav-link"
+                    >
+
+                        <span class="nav-icon">
+                            📈
+                        </span>
+
+                        <span>
+                            Reports
+                        </span>
+
+                    </a>
+
+                </div>
+
+
+
+                <!-- SYSTEM -->
+
+                <div class="nav-section">
+
+                    <p class="nav-section-title">
+                        SYSTEM
+                    </p>
+
+
+                    <a
+                        href="settings.html"
+                        class="nav-link"
+                    >
+
+                        <span class="nav-icon">
+                            ⚙️
+                        </span>
+
+                        <span>
+                            Settings
+                        </span>
+
+                    </a>
+
+                </div>
+
+            </nav>
+
+
+
+            <!-- SIDEBAR USER -->
+
+            <div class="sidebar-user">
+
+                <div class="sidebar-user-avatar">
+                    A
+                </div>
+
+                <div class="sidebar-user-info">
+
+                    <strong id="sidebarUserName">
+                        Admin
+                    </strong>
+
+                    <span>
+                        Administrator
+                    </span>
+
+                </div>
+
+                <button
+                    class="sidebar-logout"
+                    onclick="logout()"
+                    title="Logout"
+                >
+                    ↪
+                </button>
+
+            </div>
+
+
+        </aside>
+
+
+
+        <!-- =========================================
+             MAIN CONTENT
+        ========================================== -->
+
+        <main class="main-content">
+
+
+            <!-- =====================================
+                 TOP BAR
+            ====================================== -->
+
+            <header class="topbar">
+
+
+                <!-- MOBILE MENU -->
+
+                <button
+                    class="mobile-menu-button"
+                    id="mobileMenuButton"
+                    aria-label="Open menu"
+                >
+                    ☰
+                </button>
+
+
+                <!-- PAGE TITLE -->
+
+                <div class="topbar-title">
+
+                    <h1>
+                        Dashboard
+                    </h1>
+
+                    <p id="currentDate">
+                        Overview of your inventory
+                    </p>
+
+                </div>
+
+
+                <!-- TOPBAR ACTIONS -->
+
+                <div class="topbar-actions">
+
+
+                    <!-- SEARCH -->
+
+                    <div class="global-search">
+
+                        <span>
+                            🔍
+                        </span>
+
+                        <input
+                            type="search"
+                            id="globalSearch"
+                            placeholder="Search..."
+                        >
+
+                    </div>
+
+
+                    <!-- NOTIFICATIONS -->
+
+                    <button
+                        class="topbar-icon-button"
+                        id="notificationButton"
+                        title="Notifications"
+                    >
+
+                        🔔
+
+                        <span
+                            class="notification-badge"
+                            id="notificationCount"
+                        >
+                            0
+                        </span>
+
+                    </button>
+
+
+                    <!-- USER -->
+
+                    <div class="topbar-user">
+
+                        <div class="topbar-avatar">
+                            A
+                        </div>
+
+                        <div class="topbar-user-info">
+
+                            <strong id="topbarUserName">
+                                Admin
+                            </strong>
+
+                            <span>
+                                Administrator
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </header>
+
+
+
+            <!-- =====================================
+                 DASHBOARD CONTENT
+            ====================================== -->
+
+            <section class="dashboard-content">
+
+
+                <!-- WELCOME -->
+
+                <div class="welcome-section">
+
+                    <div>
+
+                        <h2 id="welcomeMessage">
+                            Good day, Admin! 👋
+                        </h2>
+
+                        <p>
+                            Here's what's happening
+                            with your inventory today.
+                        </p>
+
+                    </div>
+
+
+                    <a
+                        href="add-product.html"
+                        class="primary-action-button"
+                    >
+
+                        <span>
+                            +
+                        </span>
+
+                        Add Product
+
+                    </a>
+
+                </div>
+
+
+
+                <!-- =================================
+                     STATISTICS
+                ================================== -->
+
+                <div class="stats-grid">
+
+
+                    <!-- PRODUCTS -->
+
+                    <div class="stat-card">
+
+                        <div class="stat-card-top">
+
+                            <div class="stat-icon products-icon">
+                                📦
+                            </div>
+
+                            <span class="stat-label">
+                                Products
+                            </span>
+
+                        </div>
+
+                        <div class="stat-value" id="totalProducts">
+                            0
+                        </div>
+
+                        <div class="stat-footer">
+
+                            <span class="stat-info">
+                                Total products
+                            </span>
+
+                            <a href="products.html">
+                                View →
+                            </a>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- STOCK -->
+
+                    <div class="stat-card">
+
+                        <div class="stat-card-top">
+
+                            <div class="stat-icon stock-icon">
+                                📋
+                            </div>
+
+                            <span class="stat-label">
+                                Total Stock
+                            </span>
+
+                        </div>
+
+                        <div class="stat-value" id="totalStock">
+                            0
+                        </div>
+
+                        <div class="stat-footer">
+
+                            <span class="stat-info">
+                                Units available
+                            </span>
+
+                            <a href="products.html">
+                                View →
+                            </a>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- LOW STOCK -->
+
+                    <div class="stat-card">
+
+                        <div class="stat-card-top">
+
+                            <div class="stat-icon warning-icon">
+                                ⚠️
+                            </div>
+
+                            <span class="stat-label">
+                                Low Stock
+                            </span>
+
+                        </div>
+
+                        <div
+                            class="stat-value warning-value"
+                            id="lowStockProducts"
+                        >
+                            0
+                        </div>
+
+                        <div class="stat-footer">
+
+                            <span class="stat-info">
+                                Need attention
+                            </span>
+
+                            <a href="products.html">
+                                Check →
+                            </a>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- OUT OF STOCK -->
+
+                    <div class="stat-card">
+
+                        <div class="stat-card-top">
+
+                            <div class="stat-icon danger-icon">
+                                🚫
+                            </div>
+
+                            <span class="stat-label">
+                                Out of Stock
+                            </span>
+
+                        </div>
+
+                        <div
+                            class="stat-value danger-value"
+                            id="outOfStockProducts"
+                        >
+                            0
+                        </div>
+
+                        <div class="stat-footer">
+
+                            <span class="stat-info">
+                                Currently unavailable
+                            </span>
+
+                            <a href="products.html">
+                                Check →
+                            </a>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- SALES -->
+
+                    <div class="stat-card">
+
+                        <div class="stat-card-top">
+
+                            <div class="stat-icon sales-icon">
+                                💰
+                            </div>
+
+                            <span class="stat-label">
+                                Total Sales
+                            </span>
+
+                        </div>
+
+                        <div
+                            class="stat-value"
+                            id="totalSales"
+                        >
+                            ₹0.00
+                        </div>
+
+                        <div class="stat-footer">
+
+                            <span class="stat-info">
+                                Revenue generated
+                            </span>
+
+                            <a href="sales.html">
+                                View →
+                            </a>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- PURCHASES -->
+
+                    <div class="stat-card">
+
+                        <div class="stat-card-top">
+
+                            <div class="stat-icon purchases-icon">
+                                🛒
+                            </div>
+
+                            <span class="stat-label">
+                                Purchases
+                            </span>
+
+                        </div>
+
+                        <div
+                            class="stat-value"
+                            id="totalPurchases"
+                        >
+                            ₹0.00
+                        </div>
+
+                        <div class="stat-footer">
+
+                            <span class="stat-info">
+                                Total purchases
+                            </span>
+
+                            <a href="purchases.html">
+                                View →
+                            </a>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- PROFIT -->
+
+                    <div class="stat-card">
+
+                        <div class="stat-card-top">
+
+                            <div class="stat-icon profit-icon">
+                                📈
+                            </div>
+
+                            <span class="stat-label">
+                                Estimated Profit
+                            </span>
+
+                        </div>
+
+                        <div
+                            class="stat-value"
+                            id="estimatedProfit"
+                        >
+                            ₹0.00
+                        </div>
+
+                        <div class="stat-footer">
+
+                            <span class="stat-info">
+                                Sales − purchases
+                            </span>
+
+                            <a href="reports.html">
+                                Details →
+                            </a>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- SUPPLIERS -->
+
+                    <div class="stat-card">
+
+                        <div class="stat-card-top">
+
+                            <div class="stat-icon suppliers-icon">
+                                🚚
+                            </div>
+
+                            <span class="stat-label">
+                                Suppliers
+                            </span>
+
+                        </div>
+
+                        <div
+                            class="stat-value"
+                            id="totalSuppliers"
+                        >
+                            0
+                        </div>
+
+                        <div class="stat-footer">
+
+                            <span class="stat-info">
+                                Registered suppliers
+                            </span>
+
+                            <a href="suppliers.html">
+                                View →
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =================================
+                     ANALYTICS GRID
+                ================================== -->
+
+                <div class="analytics-grid">
+
+
+                    <!-- SALES CHART -->
+
+                    <div class="dashboard-card sales-chart-card">
+
+                        <div class="card-header">
+
+                            <div>
+
+                                <h3>
+                                    Sales Overview
+                                </h3>
+
+                                <p>
+                                    Sales performance
+                                    over the last 7 days
+                                </p>
+
+                            </div>
+
+                            <select
+                                id="salesPeriod"
+                                class="card-select"
+                            >
+
+                                <option value="7">
+                                    Last 7 Days
+                                </option>
+
+                                <option value="30">
+                                    Last 30 Days
+                                </option>
+
+                                <option value="90">
+                                    Last 3 Months
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="chart-container">
+
+                            <canvas
+                                id="salesChart"
+                            ></canvas>
+
+                            <div
+                                id="salesChartEmpty"
+                                class="chart-empty"
+                            >
+                                No sales data available.
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- INVENTORY STATUS -->
+
+                    <div class="dashboard-card inventory-status-card">
+
+                        <div class="card-header">
+
+                            <div>
+
+                                <h3>
+                                    Inventory Status
+                                </h3>
+
+                                <p>
+                                    Current stock condition
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="inventory-donut-container">
+
+                            <canvas
+                                id="inventoryChart"
+                            ></canvas>
+
+                        </div>
+
+
+                        <div
+                            class="inventory-legend"
+                            id="inventoryLegend"
+                        >
+
+                            <div class="legend-item">
+
+                                <span
+                                    class="legend-dot in-stock"
+                                ></span>
+
+                                <span>
+                                    In Stock
+                                </span>
+
+                                <strong id="inStockCount">
+                                    0
+                                </strong>
+
+                            </div>
+
+
+                            <div class="legend-item">
+
+                                <span
+                                    class="legend-dot low-stock"
+                                ></span>
+
+                                <span>
+                                    Low Stock
+                                </span>
+
+                                <strong id="lowStockCount">
+                                    0
+                                </strong>
+
+                            </div>
+
+
+                            <div class="legend-item">
+
+                                <span
+                                    class="legend-dot out-stock"
+                                ></span>
+
+                                <span>
+                                    Out of Stock
+                                </span>
+
+                                <strong id="outStockCount">
+                                    0
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =================================
+                     LOWER DASHBOARD
+                ================================== -->
+
+                <div class="dashboard-lower-grid">
+
+
+                    <!-- RECENT SALES -->
+
+                    <div class="dashboard-card recent-sales-card">
+
+                        <div class="card-header">
+
+                            <div>
+
+                                <h3>
+                                    Recent Sales
+                                </h3>
+
+                                <p>
+                                    Latest transactions
+                                </p>
+
+                            </div>
+
+                            <a
+                                href="sales.html"
+                                class="view-all-link"
+                            >
+                                View All →
+                            </a>
+
+                        </div>
+
+
+                        <div class="table-wrapper">
+
+                            <table class="dashboard-table">
+
+                                <thead>
+
+                                    <tr>
+
+                                        <th>
+                                            Invoice
+                                        </th>
+
+                                        <th>
+                                            Customer
+                                        </th>
+
+                                        <th>
+                                            Amount
+                                        </th>
+
+                                        <th>
+                                            Date
+                                        </th>
+
+                                        <th>
+                                            Status
+                                        </th>
+
+                                    </tr>
+
+                                </thead>
+
+
+                                <tbody
+                                    id="recentSalesTable"
+                                >
+
+                                    <tr>
+
+                                        <td colspan="5"
+                                            class="empty-table"
+                                        >
+                                            No sales recorded yet.
+                                        </td>
+
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- LOW STOCK -->
+
+                    <div class="dashboard-card low-stock-card">
+
+                        <div class="card-header">
+
+                            <div>
+
+                                <h3>
+                                    Low Stock Alert
+                                </h3>
+
+                                <p>
+                                    Products requiring attention
+                                </p>
+
+                            </div>
+
+                            <a
+                                href="products.html"
+                                class="view-all-link"
+                            >
+                                View All →
+                            </a>
+
+                        </div>
+
+
+                        <div
+                            class="low-stock-list"
+                            id="lowStockList"
+                        >
+
+                            <div class="empty-state">
+
+                                <div class="empty-icon">
+                                    ✓
+                                </div>
+
+                                <p>
+                                    No low-stock products.
+                                </p>
+
+                                <span>
+                                    Your inventory is healthy.
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =================================
+                     QUICK ACTIONS
+                ================================== -->
+
+                <div class="dashboard-card quick-actions-card">
+
+                    <div class="card-header">
+
+                        <div>
+
+                            <h3>
+                                Quick Actions
+                            </h3>
+
+                            <p>
+                                Frequently used operations
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="quick-actions">
+
+
+                        <a
+                            href="add-product.html"
+                            class="quick-action"
+                        >
+
+                            <span class="quick-action-icon">
+                                ➕
+                            </span>
+
+                            <div>
+
+                                <strong>
+                                    Add Product
+                                </strong>
+
+                                <span>
+                                    Add a new inventory item
+                                </span>
+
+                            </div>
+
+                        </a>
+
+
+                        <a
+                            href="sales.html"
+                            class="quick-action"
+                        >
+
+                            <span class="quick-action-icon">
+                                💰
+                            </span>
+
+                            <div>
+
+                                <strong>
+                                    New Sale
+                                </strong>
+
+                                <span>
+                                    Record a new sale
+                                </span>
+
+                            </div>
+
+                        </a>
+
+
+                        <a
+                            href="purchases.html"
+                            class="quick-action"
+                        >
+
+                            <span class="quick-action-icon">
+                                🛒
+                            </span>
+
+                            <div>
+
+                                <strong>
+                                    New Purchase
+                                </strong>
+
+                                <span>
+                                    Add inventory stock
+                                </span>
+
+                            </div>
+
+                        </a>
+
+
+                        <a
+                            href="reports.html"
+                            class="quick-action"
+                        >
+
+                            <span class="quick-action-icon">
+                                📊
+                            </span>
+
+                            <div>
+
+                                <strong>
+                                    View Reports
+                                </strong>
+
+                                <span>
+                                    Analyze business data
+                                </span>
+
+                            </div>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+
+    <!-- =========================================
+         JAVASCRIPT
+    ========================================== -->
+
+    <script src="../js/storage.js"></script>
+
+    <script src="../js/app.js"></script>
+
+    <script src="../js/dashboard.js"></script>
+
+
+</body>
+
+</html>

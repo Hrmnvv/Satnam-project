@@ -1,0 +1,1176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Inventory and Product Management"
+    >
+
+    <title>Products | Inventory Management System</title>
+
+
+    <!-- GLOBAL CSS -->
+
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
+
+    <!-- PRODUCT CSS -->
+
+    <link
+        rel="stylesheet"
+        href="../css/products.css"
+    >
+
+    <!-- TABLE CSS -->
+
+    <link
+        rel="stylesheet"
+        href="../css/tables.css"
+    >
+
+    <!-- RESPONSIVE CSS -->
+
+    <link
+        rel="stylesheet"
+        href="../css/responsive.css"
+    >
+
+</head>
+
+
+<body onload="checkAuthentication()">
+
+
+    <!-- =========================================
+         APPLICATION CONTAINER
+    ========================================== -->
+
+    <div class="app-container">
+
+
+        <!-- =========================================
+             SIDEBAR
+        ========================================== -->
+
+        <aside
+            class="sidebar"
+            id="sidebar"
+        >
+
+
+            <!-- LOGO -->
+
+            <div class="sidebar-logo">
+
+                <div class="sidebar-logo-icon">
+                    IMS
+                </div>
+
+                <div class="sidebar-logo-text">
+
+                    <h2>
+                        InventoryPro
+                    </h2>
+
+                    <span>
+                        Management System
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- NAVIGATION -->
+
+            <nav class="sidebar-navigation">
+
+
+                <!-- MAIN -->
+
+                <div class="nav-section">
+
+                    <p class="nav-section-title">
+                        MAIN
+                    </p>
+
+
+                    <a
+                        href="dashboard.html"
+                        class="nav-link"
+                    >
+
+                        <span class="nav-icon">
+                            📊
+                        </span>
+
+                        <span>
+                            Dashboard
+                        </span>
+
+                    </a>
+
+
+                    <a
+                        href="products.html"
+                        class="nav-link active"
+                    >
+
+                        <span class="nav-icon">
+                            📦
+                        </span>
+
+                        <span>
+                            Products
+                        </span>
+
+                    </a>
+
+
+                    <a
+                        href="categories.html"
+                        class="nav-link"
+                    >
+
+                        <span class="nav-icon">
+                            🏷️
+                        </span>
+
+                        <span>
+                            Categories
+                        </span>
+
+                    </a>
+
+                </div>
+
+
+                <!-- TRANSACTIONS -->
+
+                <div class="nav-section">
+
+                    <p class="nav-section-title">
+                        TRANSACTIONS
+                    </p>
+
+
+                    <a
+                        href="sales.html"
+                        class="nav-link"
+                    >
+
+                        <span class="nav-icon">
+                            💰
+                        </span>
+
+                        <span>
+                            Sales
+                        </span>
+
+                    </a>
+
+
+                    <a
+                        href="purchases.html"
+                        class="nav-link"
+                    >
+
+                        <span class="nav-icon">
+                            🛒
+                        </span>
+
+                        <span>
+                            Purchases
+                        </span>
+
+                    </a>
+
+                </div>
+
+
+                <!-- MANAGEMENT -->
+
+                <div class="nav-section">
+
+                    <p class="nav-section-title">
+                        MANAGEMENT
+                    </p>
+
+
+                    <a
+                        href="suppliers.html"
+                        class="nav-link"
+                    >
+
+                        <span class="nav-icon">
+                            🚚
+                        </span>
+
+                        <span>
+                            Suppliers
+                        </span>
+
+                    </a>
+
+
+                    <a
+                        href="customers.html"
+                        class="nav-link"
+                    >
+
+                        <span class="nav-icon">
+                            👥
+                        </span>
+
+                        <span>
+                            Customers
+                        </span>
+
+                    </a>
+
+                </div>
+
+
+                <!-- ANALYTICS -->
+
+                <div class="nav-section">
+
+                    <p class="nav-section-title">
+                        ANALYTICS
+                    </p>
+
+
+                    <a
+                        href="reports.html"
+                        class="nav-link"
+                    >
+
+                        <span class="nav-icon">
+                            📈
+                        </span>
+
+                        <span>
+                            Reports
+                        </span>
+
+                    </a>
+
+                </div>
+
+
+                <!-- SYSTEM -->
+
+                <div class="nav-section">
+
+                    <p class="nav-section-title">
+                        SYSTEM
+                    </p>
+
+
+                    <a
+                        href="settings.html"
+                        class="nav-link"
+                    >
+
+                        <span class="nav-icon">
+                            ⚙️
+                        </span>
+
+                        <span>
+                            Settings
+                        </span>
+
+                    </a>
+
+                </div>
+
+            </nav>
+
+
+            <!-- USER -->
+
+            <div class="sidebar-user">
+
+                <div class="sidebar-user-avatar">
+                    A
+                </div>
+
+                <div class="sidebar-user-info">
+
+                    <strong id="sidebarUserName">
+                        Admin
+                    </strong>
+
+                    <span>
+                        Administrator
+                    </span>
+
+                </div>
+
+                <button
+                    class="sidebar-logout"
+                    onclick="logout()"
+                    title="Logout"
+                >
+                    ↪
+                </button>
+
+            </div>
+
+        </aside>
+
+
+
+        <!-- =========================================
+             MAIN CONTENT
+        ========================================== -->
+
+        <main class="main-content">
+
+
+            <!-- =====================================
+                 TOPBAR
+            ====================================== -->
+
+            <header class="topbar">
+
+
+                <!-- MOBILE MENU -->
+
+                <button
+                    class="mobile-menu-button"
+                    id="mobileMenuButton"
+                    aria-label="Open menu"
+                >
+                    ☰
+                </button>
+
+
+                <!-- TITLE -->
+
+                <div class="topbar-title">
+
+                    <h1>
+                        Products
+                    </h1>
+
+                    <p>
+                        Manage and monitor your inventory
+                    </p>
+
+                </div>
+
+
+                <!-- ACTIONS -->
+
+                <div class="topbar-actions">
+
+
+                    <!-- SEARCH -->
+
+                    <div class="global-search">
+
+                        <span>
+                            🔍
+                        </span>
+
+                        <input
+                            type="search"
+                            id="globalSearch"
+                            placeholder="Search..."
+                        >
+
+                    </div>
+
+
+                    <!-- NOTIFICATION -->
+
+                    <button
+                        class="topbar-icon-button"
+                        id="notificationButton"
+                        title="Notifications"
+                    >
+
+                        🔔
+
+                        <span
+                            class="notification-badge"
+                            id="notificationCount"
+                        >
+                            0
+                        </span>
+
+                    </button>
+
+
+                    <!-- USER -->
+
+                    <div class="topbar-user">
+
+                        <div class="topbar-avatar">
+                            A
+                        </div>
+
+                        <div class="topbar-user-info">
+
+                            <strong id="topbarUserName">
+                                Admin
+                            </strong>
+
+                            <span>
+                                Administrator
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </header>
+
+
+
+            <!-- =====================================
+                 PRODUCTS CONTENT
+            ====================================== -->
+
+            <section class="page-content">
+
+
+                <!-- =================================
+                     PAGE HEADER
+                ================================== -->
+
+                <div class="page-header">
+
+                    <div class="page-header-text">
+
+                        <h2>
+                            Inventory
+                        </h2>
+
+                        <p>
+                            View, add, edit and manage
+                            all your products.
+                        </p>
+
+                    </div>
+
+
+                    <div class="page-header-actions">
+
+                        <button
+                            type="button"
+                            class="secondary-button"
+                            id="exportProductsButton"
+                        >
+
+                            <span>
+                                ↓
+                            </span>
+
+                            Export
+
+                        </button>
+
+
+                        <a
+                            href="add-product.html"
+                            class="primary-action-button"
+                        >
+
+                            <span>
+                                +
+                            </span>
+
+                            Add Product
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =================================
+                     INVENTORY SUMMARY
+                ================================== -->
+
+                <div class="product-summary-grid">
+
+
+                    <!-- TOTAL PRODUCTS -->
+
+                    <div class="summary-card">
+
+                        <div class="summary-icon">
+                            📦
+                        </div>
+
+                        <div>
+
+                            <span>
+                                Total Products
+                            </span>
+
+                            <strong id="productCount">
+                                0
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- TOTAL STOCK -->
+
+                    <div class="summary-card">
+
+                        <div class="summary-icon">
+                            📋
+                        </div>
+
+                        <div>
+
+                            <span>
+                                Total Stock
+                            </span>
+
+                            <strong id="stockCount">
+                                0
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- LOW STOCK -->
+
+                    <div class="summary-card warning">
+
+                        <div class="summary-icon">
+                            ⚠️
+                        </div>
+
+                        <div>
+
+                            <span>
+                                Low Stock
+                            </span>
+
+                            <strong id="lowStockCount">
+                                0
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- OUT OF STOCK -->
+
+                    <div class="summary-card danger">
+
+                        <div class="summary-icon">
+                            🚫
+                        </div>
+
+                        <div>
+
+                            <span>
+                                Out of Stock
+                            </span>
+
+                            <strong id="outOfStockCount">
+                                0
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =================================
+                     PRODUCT TABLE CARD
+                ================================== -->
+
+                <div class="dashboard-card products-table-card">
+
+
+                    <!-- TABLE HEADER -->
+
+                    <div class="products-toolbar">
+
+
+                        <!-- SEARCH -->
+
+                        <div class="product-search">
+
+                            <span>
+                                🔍
+                            </span>
+
+                            <input
+                                type="search"
+                                id="productSearch"
+                                placeholder="Search by product name, SKU..."
+                            >
+
+                        </div>
+
+
+                        <!-- CATEGORY FILTER -->
+
+                        <div class="filter-control">
+
+                            <label for="categoryFilter">
+                                Category
+                            </label>
+
+                            <select
+                                id="categoryFilter"
+                            >
+
+                                <option value="all">
+                                    All Categories
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <!-- STOCK FILTER -->
+
+                        <div class="filter-control">
+
+                            <label for="stockFilter">
+                                Stock Status
+                            </label>
+
+                            <select
+                                id="stockFilter"
+                            >
+
+                                <option value="all">
+                                    All Status
+                                </option>
+
+                                <option value="in-stock">
+                                    In Stock
+                                </option>
+
+                                <option value="low-stock">
+                                    Low Stock
+                                </option>
+
+                                <option value="out-of-stock">
+                                    Out of Stock
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <!-- SORT -->
+
+                        <div class="filter-control">
+
+                            <label for="sortProducts">
+                                Sort By
+                            </label>
+
+                            <select
+                                id="sortProducts"
+                            >
+
+                                <option value="newest">
+                                    Newest
+                                </option>
+
+                                <option value="name-asc">
+                                    Name A-Z
+                                </option>
+
+                                <option value="name-desc">
+                                    Name Z-A
+                                </option>
+
+                                <option value="stock-high">
+                                    Stock High-Low
+                                </option>
+
+                                <option value="stock-low">
+                                    Stock Low-High
+                                </option>
+
+                                <option value="price-high">
+                                    Price High-Low
+                                </option>
+
+                                <option value="price-low">
+                                    Price Low-High
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <!-- RESET -->
+
+                        <button
+                            type="button"
+                            class="reset-filter-button"
+                            id="resetFilters"
+                        >
+                            Reset
+                        </button>
+
+                    </div>
+
+
+
+                    <!-- TABLE -->
+
+                    <div class="table-wrapper">
+
+                        <table
+                            class="data-table products-table"
+                            id="productsTable"
+                        >
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>
+                                        Product
+                                    </th>
+
+                                    <th>
+                                        SKU
+                                    </th>
+
+                                    <th>
+                                        Category
+                                    </th>
+
+                                    <th>
+                                        Supplier
+                                    </th>
+
+                                    <th>
+                                        Purchase Price
+                                    </th>
+
+                                    <th>
+                                        Selling Price
+                                    </th>
+
+                                    <th>
+                                        Stock
+                                    </th>
+
+                                    <th>
+                                        Status
+                                    </th>
+
+                                    <th>
+                                        Actions
+                                    </th>
+
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody
+                                id="productsTableBody"
+                            >
+
+                                <!--
+                                    Products will be
+                                    inserted here
+                                    by products.js
+                                -->
+
+                                <tr
+                                    id="emptyProductsRow"
+                                >
+
+                                    <td
+                                        colspan="9"
+                                        class="empty-table"
+                                    >
+
+                                        <div class="table-empty-state">
+
+                                            <div class="empty-state-icon">
+                                                📦
+                                            </div>
+
+                                            <h3>
+                                                No Products Found
+                                            </h3>
+
+                                            <p>
+                                                Your inventory is
+                                                currently empty.
+                                            </p>
+
+                                            <a
+                                                href="add-product.html"
+                                                class="primary-action-button"
+                                            >
+
+                                                + Add Your First Product
+
+                                            </a>
+
+                                        </div>
+
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+
+
+                    <!-- TABLE FOOTER -->
+
+                    <div class="table-footer">
+
+
+                        <div
+                            class="table-results"
+                            id="tableResults"
+                        >
+                            Showing 0 products
+                        </div>
+
+
+                        <div class="pagination">
+
+
+                            <button
+                                type="button"
+                                class="pagination-button"
+                                id="previousPage"
+                                disabled
+                            >
+                                ←
+                            </button>
+
+
+                            <div
+                                id="paginationNumbers"
+                                class="pagination-numbers"
+                            >
+
+                                <button
+                                    type="button"
+                                    class="pagination-number active"
+                                >
+                                    1
+                                </button>
+
+                            </div>
+
+
+                            <button
+                                type="button"
+                                class="pagination-button"
+                                id="nextPage"
+                                disabled
+                            >
+                                →
+                            </button>
+
+                        </div>
+
+
+                        <div class="items-per-page">
+
+                            <label for="itemsPerPage">
+                                Show
+                            </label>
+
+                            <select id="itemsPerPage">
+
+                                <option value="10">
+                                    10
+                                </option>
+
+                                <option value="25">
+                                    25
+                                </option>
+
+                                <option value="50">
+                                    50
+                                </option>
+
+                                <option value="100">
+                                    100
+                                </option>
+
+                            </select>
+
+                            <span>
+                                per page
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =================================
+                     BULK ACTION BAR
+                ================================== -->
+
+                <div
+                    class="bulk-action-bar"
+                    id="bulkActionBar"
+                    style="display: none;"
+                >
+
+                    <div>
+
+                        <strong
+                            id="selectedProductCount"
+                        >
+                            0
+                        </strong>
+
+                        products selected
+
+                    </div>
+
+
+                    <div class="bulk-actions">
+
+                        <button
+                            type="button"
+                            id="bulkDeleteButton"
+                            class="danger-button"
+                        >
+
+                            🗑 Delete Selected
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+
+    <!-- =========================================
+         PRODUCT DETAILS MODAL
+    ========================================== -->
+
+    <div
+        class="modal-overlay"
+        id="productDetailsModal"
+        style="display: none;"
+    >
+
+        <div class="modal product-details-modal">
+
+
+            <!-- MODAL HEADER -->
+
+            <div class="modal-header">
+
+                <div>
+
+                    <h2>
+                        Product Details
+                    </h2>
+
+                    <p>
+                        Complete product information
+                    </p>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="modal-close"
+                    id="closeProductModal"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <!-- MODAL BODY -->
+
+            <div
+                class="modal-body"
+                id="productDetailsContent"
+            >
+
+                <!--
+                    Product information will be
+                    inserted by products.js
+                -->
+
+            </div>
+
+
+            <!-- MODAL FOOTER -->
+
+            <div class="modal-footer">
+
+                <button
+                    type="button"
+                    class="secondary-button"
+                    id="closeProductModalButton"
+                >
+                    Close
+                </button>
+
+
+                <a
+                    href="add-product.html"
+                    class="primary-action-button"
+                    id="editProductFromModal"
+                >
+                    Edit Product
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================================
+         DELETE CONFIRMATION MODAL
+    ========================================== -->
+
+    <div
+        class="modal-overlay"
+        id="deleteModal"
+        style="display: none;"
+    >
+
+        <div class="modal small-modal">
+
+
+            <div class="modal-header">
+
+                <h2>
+                    Delete Product
+                </h2>
+
+                <button
+                    type="button"
+                    class="modal-close"
+                    id="closeDeleteModal"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <div class="modal-body delete-confirmation">
+
+                <div class="delete-icon">
+                    ⚠️
+                </div>
+
+                <h3>
+                    Are you sure?
+                </h3>
+
+                <p>
+                    This action cannot be undone.
+                    The selected product will be
+                    permanently removed from your inventory.
+                </p>
+
+            </div>
+
+
+            <div class="modal-footer">
+
+                <button
+                    type="button"
+                    class="secondary-button"
+                    id="cancelDelete"
+                >
+                    Cancel
+                </button>
+
+
+                <button
+                    type="button"
+                    class="danger-button"
+                    id="confirmDelete"
+                >
+                    Delete Product
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================================
+         JAVASCRIPT
+    ========================================== -->
+
+    <script src="../js/storage.js"></script>
+
+    <script src="../js/app.js"></script>
+
+    <script src="../js/products.js"></script>
+
+
+</body>
+
+</html>

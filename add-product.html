@@ -1,0 +1,1387 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Add or edit products in the Inventory Management System"
+    >
+
+    <title>Add Product | Inventory Management System</title>
+
+
+    <!-- GLOBAL CSS -->
+
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
+
+    <!-- FORMS CSS -->
+
+    <link
+        rel="stylesheet"
+        href="../css/forms.css"
+    >
+
+    <!-- PRODUCT CSS -->
+
+    <link
+        rel="stylesheet"
+        href="../css/products.css"
+    >
+
+    <!-- RESPONSIVE CSS -->
+
+    <link
+        rel="stylesheet"
+        href="../css/responsive.css"
+    >
+
+</head>
+
+
+<body onload="checkAuthentication()">
+
+
+    <!-- =========================================
+         APPLICATION CONTAINER
+    ========================================== -->
+
+    <div class="app-container">
+
+
+        <!-- =========================================
+             SIDEBAR
+        ========================================== -->
+
+        <aside
+            class="sidebar"
+            id="sidebar"
+        >
+
+
+            <!-- LOGO -->
+
+            <div class="sidebar-logo">
+
+                <div class="sidebar-logo-icon">
+                    IMS
+                </div>
+
+                <div class="sidebar-logo-text">
+
+                    <h2>
+                        InventoryPro
+                    </h2>
+
+                    <span>
+                        Management System
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- NAVIGATION -->
+
+            <nav class="sidebar-navigation">
+
+
+                <!-- MAIN -->
+
+                <div class="nav-section">
+
+                    <p class="nav-section-title">
+                        MAIN
+                    </p>
+
+
+                    <a
+                        href="dashboard.html"
+                        class="nav-link"
+                    >
+
+                        <span class="nav-icon">
+                            📊
+                        </span>
+
+                        <span>
+                            Dashboard
+                        </span>
+
+                    </a>
+
+
+                    <a
+                        href="products.html"
+                        class="nav-link active"
+                    >
+
+                        <span class="nav-icon">
+                            📦
+                        </span>
+
+                        <span>
+                            Products
+                        </span>
+
+                    </a>
+
+
+                    <a
+                        href="categories.html"
+                        class="nav-link"
+                    >
+
+                        <span class="nav-icon">
+                            🏷️
+                        </span>
+
+                        <span>
+                            Categories
+                        </span>
+
+                    </a>
+
+                </div>
+
+
+                <!-- TRANSACTIONS -->
+
+                <div class="nav-section">
+
+                    <p class="nav-section-title">
+                        TRANSACTIONS
+                    </p>
+
+
+                    <a
+                        href="sales.html"
+                        class="nav-link"
+                    >
+
+                        <span class="nav-icon">
+                            💰
+                        </span>
+
+                        <span>
+                            Sales
+                        </span>
+
+                    </a>
+
+
+                    <a
+                        href="purchases.html"
+                        class="nav-link"
+                    >
+
+                        <span class="nav-icon">
+                            🛒
+                        </span>
+
+                        <span>
+                            Purchases
+                        </span>
+
+                    </a>
+
+                </div>
+
+
+                <!-- MANAGEMENT -->
+
+                <div class="nav-section">
+
+                    <p class="nav-section-title">
+                        MANAGEMENT
+                    </p>
+
+
+                    <a
+                        href="suppliers.html"
+                        class="nav-link"
+                    >
+
+                        <span class="nav-icon">
+                            🚚
+                        </span>
+
+                        <span>
+                            Suppliers
+                        </span>
+
+                    </a>
+
+
+                    <a
+                        href="customers.html"
+                        class="nav-link"
+                    >
+
+                        <span class="nav-icon">
+                            👥
+                        </span>
+
+                        <span>
+                            Customers
+                        </span>
+
+                    </a>
+
+                </div>
+
+
+                <!-- ANALYTICS -->
+
+                <div class="nav-section">
+
+                    <p class="nav-section-title">
+                        ANALYTICS
+                    </p>
+
+
+                    <a
+                        href="reports.html"
+                        class="nav-link"
+                    >
+
+                        <span class="nav-icon">
+                            📈
+                        </span>
+
+                        <span>
+                            Reports
+                        </span>
+
+                    </a>
+
+                </div>
+
+
+                <!-- SYSTEM -->
+
+                <div class="nav-section">
+
+                    <p class="nav-section-title">
+                        SYSTEM
+                    </p>
+
+
+                    <a
+                        href="settings.html"
+                        class="nav-link"
+                    >
+
+                        <span class="nav-icon">
+                            ⚙️
+                        </span>
+
+                        <span>
+                            Settings
+                        </span>
+
+                    </a>
+
+                </div>
+
+            </nav>
+
+
+            <!-- USER -->
+
+            <div class="sidebar-user">
+
+                <div class="sidebar-user-avatar">
+                    A
+                </div>
+
+                <div class="sidebar-user-info">
+
+                    <strong id="sidebarUserName">
+                        Admin
+                    </strong>
+
+                    <span>
+                        Administrator
+                    </span>
+
+                </div>
+
+                <button
+                    class="sidebar-logout"
+                    onclick="logout()"
+                    title="Logout"
+                >
+                    ↪
+                </button>
+
+            </div>
+
+        </aside>
+
+
+
+        <!-- =========================================
+             MAIN CONTENT
+        ========================================== -->
+
+        <main class="main-content">
+
+
+            <!-- =====================================
+                 TOPBAR
+            ====================================== -->
+
+            <header class="topbar">
+
+
+                <button
+                    class="mobile-menu-button"
+                    id="mobileMenuButton"
+                    aria-label="Open menu"
+                >
+                    ☰
+                </button>
+
+
+                <div class="topbar-title">
+
+                    <h1 id="pageTitle">
+                        Add Product
+                    </h1>
+
+                    <p id="pageSubtitle">
+                        Add a new item to your inventory
+                    </p>
+
+                </div>
+
+
+                <div class="topbar-actions">
+
+
+                    <div class="global-search">
+
+                        <span>
+                            🔍
+                        </span>
+
+                        <input
+                            type="search"
+                            id="globalSearch"
+                            placeholder="Search..."
+                        >
+
+                    </div>
+
+
+                    <button
+                        class="topbar-icon-button"
+                        id="notificationButton"
+                        title="Notifications"
+                    >
+
+                        🔔
+
+                        <span
+                            class="notification-badge"
+                            id="notificationCount"
+                        >
+                            0
+                        </span>
+
+                    </button>
+
+
+                    <div class="topbar-user">
+
+                        <div class="topbar-avatar">
+                            A
+                        </div>
+
+                        <div class="topbar-user-info">
+
+                            <strong id="topbarUserName">
+                                Admin
+                            </strong>
+
+                            <span>
+                                Administrator
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </header>
+
+
+
+            <!-- =====================================
+                 PAGE CONTENT
+            ====================================== -->
+
+            <section class="page-content">
+
+
+                <!-- BREADCRUMB -->
+
+                <div class="breadcrumb">
+
+                    <a href="dashboard.html">
+                        Dashboard
+                    </a>
+
+                    <span>
+                        /
+                    </span>
+
+                    <a href="products.html">
+                        Products
+                    </a>
+
+                    <span>
+                        /
+                    </span>
+
+                    <strong id="breadcrumbCurrent">
+                        Add Product
+                    </strong>
+
+                </div>
+
+
+
+                <!-- =================================
+                     PRODUCT FORM
+                ================================== -->
+
+                <form
+                    id="productForm"
+                    class="product-form"
+                    novalidate
+                >
+
+
+                    <!-- =================================
+                         BASIC INFORMATION
+                    ================================== -->
+
+                    <div class="form-card">
+
+
+                        <div class="form-card-header">
+
+                            <div class="form-card-icon">
+                                📦
+                            </div>
+
+                            <div>
+
+                                <h2>
+                                    Basic Information
+                                </h2>
+
+                                <p>
+                                    Enter the basic details
+                                    of your product.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-card-body">
+
+
+                            <!-- PRODUCT NAME -->
+
+                            <div class="form-group">
+
+                                <label for="productName">
+
+                                    Product Name
+
+                                    <span class="required">
+                                        *
+                                    </span>
+
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="productName"
+                                    name="productName"
+                                    placeholder="e.g. Wireless Keyboard"
+                                    maxlength="100"
+                                    required
+                                >
+
+                                <small class="form-help">
+                                    Enter a clear and descriptive
+                                    product name.
+                                </small>
+
+                                <span
+                                    class="form-error"
+                                    id="productNameError"
+                                ></span>
+
+                            </div>
+
+
+
+                            <!-- SKU -->
+
+                            <div class="form-group">
+
+                                <label for="productSKU">
+
+                                    SKU
+
+                                    <span class="required">
+                                        *
+                                    </span>
+
+                                </label>
+
+                                <div class="input-with-action">
+
+                                    <input
+                                        type="text"
+                                        id="productSKU"
+                                        name="productSKU"
+                                        placeholder="e.g. KB-1001"
+                                        maxlength="50"
+                                        required
+                                    >
+
+                                    <button
+                                        type="button"
+                                        class="input-action-button"
+                                        id="generateSKU"
+                                    >
+                                        Generate
+                                    </button>
+
+                                </div>
+
+                                <small class="form-help">
+                                    Stock Keeping Unit must be unique.
+                                </small>
+
+                                <span
+                                    class="form-error"
+                                    id="productSKUError"
+                                ></span>
+
+                            </div>
+
+
+
+                            <!-- DESCRIPTION -->
+
+                            <div class="form-group full-width">
+
+                                <label for="productDescription">
+                                    Description
+                                </label>
+
+                                <textarea
+                                    id="productDescription"
+                                    name="productDescription"
+                                    rows="4"
+                                    maxlength="500"
+                                    placeholder="Enter product description..."
+                                ></textarea>
+
+                                <div class="textarea-footer">
+
+                                    <small class="form-help">
+                                        Optional product description.
+                                    </small>
+
+                                    <span
+                                        id="descriptionCounter"
+                                        class="character-counter"
+                                    >
+                                        0 / 500
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+
+
+                            <!-- CATEGORY -->
+
+                            <div class="form-group">
+
+                                <label for="productCategory">
+
+                                    Category
+
+                                    <span class="required">
+                                        *
+                                    </span>
+
+                                </label>
+
+                                <select
+                                    id="productCategory"
+                                    name="productCategory"
+                                    required
+                                >
+
+                                    <option value="">
+                                        Select Category
+                                    </option>
+
+                                    <!--
+                                        Categories will be
+                                        populated by JavaScript
+                                    -->
+
+                                </select>
+
+                                <span
+                                    class="form-error"
+                                    id="productCategoryError"
+                                ></span>
+
+                            </div>
+
+
+
+                            <!-- BRAND -->
+
+                            <div class="form-group">
+
+                                <label for="productBrand">
+                                    Brand
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="productBrand"
+                                    name="productBrand"
+                                    placeholder="e.g. Logitech"
+                                    maxlength="100"
+                                >
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- =================================
+                         PRICING & STOCK
+                    ================================== -->
+
+                    <div class="form-card">
+
+
+                        <div class="form-card-header">
+
+                            <div class="form-card-icon">
+                                💰
+                            </div>
+
+                            <div>
+
+                                <h2>
+                                    Pricing & Inventory
+                                </h2>
+
+                                <p>
+                                    Set pricing and stock
+                                    information.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-card-body">
+
+
+                            <!-- PURCHASE PRICE -->
+
+                            <div class="form-group">
+
+                                <label for="purchasePrice">
+
+                                    Purchase Price
+
+                                    <span class="required">
+                                        *
+                                    </span>
+
+                                </label>
+
+                                <div class="currency-input">
+
+                                    <span>
+                                        ₹
+                                    </span>
+
+                                    <input
+                                        type="number"
+                                        id="purchasePrice"
+                                        name="purchasePrice"
+                                        placeholder="0.00"
+                                        min="0"
+                                        step="0.01"
+                                        required
+                                    >
+
+                                </div>
+
+                                <span
+                                    class="form-error"
+                                    id="purchasePriceError"
+                                ></span>
+
+                            </div>
+
+
+
+                            <!-- SELLING PRICE -->
+
+                            <div class="form-group">
+
+                                <label for="sellingPrice">
+
+                                    Selling Price
+
+                                    <span class="required">
+                                        *
+                                    </span>
+
+                                </label>
+
+                                <div class="currency-input">
+
+                                    <span>
+                                        ₹
+                                    </span>
+
+                                    <input
+                                        type="number"
+                                        id="sellingPrice"
+                                        name="sellingPrice"
+                                        placeholder="0.00"
+                                        min="0"
+                                        step="0.01"
+                                        required
+                                    >
+
+                                </div>
+
+                                <span
+                                    class="form-error"
+                                    id="sellingPriceError"
+                                ></span>
+
+                            </div>
+
+
+
+                            <!-- STOCK QUANTITY -->
+
+                            <div class="form-group">
+
+                                <label for="stockQuantity">
+
+                                    Stock Quantity
+
+                                    <span class="required">
+                                        *
+                                    </span>
+
+                                </label>
+
+                                <input
+                                    type="number"
+                                    id="stockQuantity"
+                                    name="stockQuantity"
+                                    placeholder="0"
+                                    min="0"
+                                    step="1"
+                                    required
+                                >
+
+                                <span
+                                    class="form-error"
+                                    id="stockQuantityError"
+                                ></span>
+
+                            </div>
+
+
+
+                            <!-- MINIMUM STOCK -->
+
+                            <div class="form-group">
+
+                                <label for="minimumStock">
+
+                                    Minimum Stock Level
+
+                                    <span class="required">
+                                        *
+                                    </span>
+
+                                </label>
+
+                                <input
+                                    type="number"
+                                    id="minimumStock"
+                                    name="minimumStock"
+                                    placeholder="10"
+                                    min="0"
+                                    step="1"
+                                    value="10"
+                                    required
+                                >
+
+                                <small class="form-help">
+                                    You'll receive a low-stock
+                                    warning below this level.
+                                </small>
+
+                            </div>
+
+
+
+                            <!-- MAXIMUM STOCK -->
+
+                            <div class="form-group">
+
+                                <label for="maximumStock">
+                                    Maximum Stock Level
+                                </label>
+
+                                <input
+                                    type="number"
+                                    id="maximumStock"
+                                    name="maximumStock"
+                                    placeholder="100"
+                                    min="0"
+                                    step="1"
+                                >
+
+                            </div>
+
+
+
+                            <!-- TAX -->
+
+                            <div class="form-group">
+
+                                <label for="taxRate">
+                                    Tax / GST Rate
+                                </label>
+
+                                <div class="percentage-input">
+
+                                    <input
+                                        type="number"
+                                        id="taxRate"
+                                        name="taxRate"
+                                        placeholder="18"
+                                        min="0"
+                                        max="100"
+                                        step="0.01"
+                                        value="18"
+                                    >
+
+                                    <span>
+                                        %
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- =================================
+                         SUPPLIER INFORMATION
+                    ================================== -->
+
+                    <div class="form-card">
+
+
+                        <div class="form-card-header">
+
+                            <div class="form-card-icon">
+                                🚚
+                            </div>
+
+                            <div>
+
+                                <h2>
+                                    Supplier Information
+                                </h2>
+
+                                <p>
+                                    Connect this product with
+                                    its supplier.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-card-body">
+
+
+                            <!-- SUPPLIER -->
+
+                            <div class="form-group">
+
+                                <label for="productSupplier">
+                                    Supplier
+                                </label>
+
+                                <select
+                                    id="productSupplier"
+                                    name="productSupplier"
+                                >
+
+                                    <option value="">
+                                        Select Supplier
+                                    </option>
+
+                                    <!--
+                                        Suppliers will be
+                                        loaded using JavaScript
+                                    -->
+
+                                </select>
+
+                            </div>
+
+
+
+                            <!-- SUPPLIER PRODUCT CODE -->
+
+                            <div class="form-group">
+
+                                <label for="supplierProductCode">
+                                    Supplier Product Code
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="supplierProductCode"
+                                    name="supplierProductCode"
+                                    placeholder="Supplier reference code"
+                                >
+
+                            </div>
+
+
+
+                            <!-- LOCATION -->
+
+                            <div class="form-group">
+
+                                <label for="productLocation">
+                                    Storage Location
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="productLocation"
+                                    name="productLocation"
+                                    placeholder="e.g. Warehouse A - Shelf 4"
+                                >
+
+                            </div>
+
+
+
+                            <!-- UNIT -->
+
+                            <div class="form-group">
+
+                                <label for="productUnit">
+                                    Unit of Measurement
+                                </label>
+
+                                <select
+                                    id="productUnit"
+                                    name="productUnit"
+                                >
+
+                                    <option value="piece">
+                                        Piece
+                                    </option>
+
+                                    <option value="box">
+                                        Box
+                                    </option>
+
+                                    <option value="kg">
+                                        Kilogram
+                                    </option>
+
+                                    <option value="gram">
+                                        Gram
+                                    </option>
+
+                                    <option value="liter">
+                                        Liter
+                                    </option>
+
+                                    <option value="meter">
+                                        Meter
+                                    </option>
+
+                                    <option value="set">
+                                        Set
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- =================================
+                         ADDITIONAL INFORMATION
+                    ================================== -->
+
+                    <div class="form-card">
+
+
+                        <div class="form-card-header">
+
+                            <div class="form-card-icon">
+                                ⚙️
+                            </div>
+
+                            <div>
+
+                                <h2>
+                                    Additional Information
+                                </h2>
+
+                                <p>
+                                    Add optional product
+                                    configuration details.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-card-body">
+
+
+                            <!-- PRODUCT IMAGE -->
+
+                            <div class="form-group full-width">
+
+                                <label for="productImage">
+                                    Product Image
+                                </label>
+
+                                <div
+                                    class="image-upload-area"
+                                    id="imageUploadArea"
+                                >
+
+                                    <div class="image-upload-icon">
+                                        📷
+                                    </div>
+
+                                    <h3>
+                                        Upload Product Image
+                                    </h3>
+
+                                    <p>
+                                        PNG, JPG or WEBP
+                                        up to 2MB
+                                    </p>
+
+                                    <label
+                                        for="productImage"
+                                        class="upload-button"
+                                    >
+                                        Choose Image
+                                    </label>
+
+                                    <input
+                                        type="file"
+                                        id="productImage"
+                                        name="productImage"
+                                        accept="image/png,image/jpeg,image/webp"
+                                        hidden
+                                    >
+
+                                </div>
+
+
+                                <!-- IMAGE PREVIEW -->
+
+                                <div
+                                    id="imagePreview"
+                                    class="image-preview"
+                                    style="display: none;"
+                                >
+
+                                    <img
+                                        id="previewImage"
+                                        src=""
+                                        alt="Product preview"
+                                    >
+
+                                    <button
+                                        type="button"
+                                        id="removeImage"
+                                        class="remove-image-button"
+                                    >
+                                        ×
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+
+
+                            <!-- STATUS -->
+
+                            <div class="form-group">
+
+                                <label for="productStatus">
+                                    Product Status
+                                </label>
+
+                                <select
+                                    id="productStatus"
+                                    name="productStatus"
+                                >
+
+                                    <option value="active">
+                                        Active
+                                    </option>
+
+                                    <option value="inactive">
+                                        Inactive
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+
+                            <!-- TRACK INVENTORY -->
+
+                            <div class="form-group">
+
+                                <label>
+                                    Inventory Tracking
+                                </label>
+
+                                <label class="checkbox-label">
+
+                                    <input
+                                        type="checkbox"
+                                        id="trackInventory"
+                                        name="trackInventory"
+                                        checked
+                                    >
+
+                                    <span>
+                                        Track inventory for
+                                        this product
+                                    </span>
+
+                                </label>
+
+                            </div>
+
+
+
+                            <!-- NOTES -->
+
+                            <div class="form-group full-width">
+
+                                <label for="productNotes">
+                                    Internal Notes
+                                </label>
+
+                                <textarea
+                                    id="productNotes"
+                                    name="productNotes"
+                                    rows="4"
+                                    maxlength="1000"
+                                    placeholder="Add internal notes about this product..."
+                                ></textarea>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- =================================
+                         FORM ACTIONS
+                    ================================== -->
+
+                    <div class="form-actions">
+
+
+                        <a
+                            href="products.html"
+                            class="secondary-button"
+                        >
+                            Cancel
+                        </a>
+
+
+                        <button
+                            type="button"
+                            class="secondary-button"
+                            id="saveDraftButton"
+                        >
+                            Save Draft
+                        </button>
+
+
+                        <button
+                            type="submit"
+                            class="primary-action-button"
+                            id="saveProductButton"
+                        >
+
+                            <span>
+                                ✓
+                            </span>
+
+                            <span id="saveButtonText">
+                                Save Product
+                            </span>
+
+                        </button>
+
+                    </div>
+
+
+                </form>
+
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+
+    <!-- =========================================
+         SUCCESS MODAL
+    ========================================== -->
+
+    <div
+        class="modal-overlay"
+        id="successModal"
+        style="display: none;"
+    >
+
+        <div class="modal small-modal">
+
+
+            <div class="success-modal-content">
+
+                <div class="success-icon">
+                    ✓
+                </div>
+
+                <h2>
+                    Product Saved!
+                </h2>
+
+                <p>
+                    The product has been successfully
+                    added to your inventory.
+                </p>
+
+
+                <div class="modal-footer">
+
+                    <a
+                        href="products.html"
+                        class="secondary-button"
+                    >
+                        View Products
+                    </a>
+
+                    <button
+                        type="button"
+                        class="primary-action-button"
+                        id="addAnotherProduct"
+                    >
+                        Add Another
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================================
+         JAVASCRIPT
+    ========================================== -->
+
+    <script src="../js/storage.js"></script>
+
+    <script src="../js/app.js"></script>
+
+    <script src="../js/products.js"></script>
+
+
+</body>
+
+</html>

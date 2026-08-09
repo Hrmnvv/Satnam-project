@@ -1,0 +1,1706 @@
+/* =========================================================
+   INVENTORY MANAGEMENT SYSTEM
+   DASHBOARD STYLESHEET
+   File: css/dashboard.css
+========================================================= */
+
+
+/* =========================================================
+   1. DASHBOARD LAYOUT
+========================================================= */
+
+.dashboard-page {
+
+    width: 100%;
+
+}
+
+
+/* =========================================================
+   2. DASHBOARD WELCOME SECTION
+========================================================= */
+
+.dashboard-welcome {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    padding: 22px 24px;
+
+    margin-bottom: 20px;
+
+    border-radius: 12px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #2563eb,
+            #1d4ed8
+        );
+
+    color: #ffffff;
+
+    box-shadow:
+        0 8px 20px rgba(37, 99, 235, 0.18);
+
+}
+
+
+.dashboard-welcome-content h2 {
+
+    font-size: 21px;
+
+    font-weight: 700;
+
+    line-height: 1.3;
+
+}
+
+
+.dashboard-welcome-content p {
+
+    margin-top: 5px;
+
+    color: rgba(255, 255, 255, 0.82);
+
+    font-size: 11px;
+
+}
+
+
+.dashboard-welcome-date {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 9px 12px;
+
+    border:
+        1px solid rgba(255, 255, 255, 0.25);
+
+    border-radius: 7px;
+
+    background:
+        rgba(255, 255, 255, 0.10);
+
+    font-size: 10px;
+
+}
+
+
+/* =========================================================
+   3. DASHBOARD STAT GRID
+========================================================= */
+
+.dashboard-stats {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+    gap: 16px;
+
+    margin-bottom: 20px;
+
+}
+
+
+.dashboard-stat-card {
+
+    position: relative;
+
+    min-height: 132px;
+
+    padding: 18px;
+
+    overflow: hidden;
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 11px;
+
+    background: #ffffff;
+
+    box-shadow: var(--shadow-small);
+
+    transition: var(--transition);
+
+}
+
+
+.dashboard-stat-card:hover {
+
+    transform: translateY(-2px);
+
+    box-shadow: var(--shadow);
+
+}
+
+
+.dashboard-stat-card::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 80px;
+
+    height: 80px;
+
+    right: -30px;
+
+    bottom: -30px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(37, 99, 235, 0.04);
+
+}
+
+
+.dashboard-stat-top {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 10px;
+
+}
+
+
+.dashboard-stat-icon {
+
+    width: 43px;
+
+    height: 43px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 9px;
+
+    font-size: 19px;
+
+}
+
+
+.dashboard-stat-icon.blue {
+
+    background: #eff6ff;
+
+}
+
+
+.dashboard-stat-icon.green {
+
+    background: #f0fdf4;
+
+}
+
+
+.dashboard-stat-icon.orange {
+
+    background: #fff7ed;
+
+}
+
+
+.dashboard-stat-icon.red {
+
+    background: #fef2f2;
+
+}
+
+
+.dashboard-stat-icon.purple {
+
+    background: #faf5ff;
+
+}
+
+
+.dashboard-stat-icon.cyan {
+
+    background: #ecfeff;
+
+}
+
+
+.dashboard-stat-menu {
+
+    width: 28px;
+
+    height: 28px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border: 0;
+
+    border-radius: 6px;
+
+    background: transparent;
+
+    color: var(--text-light);
+
+    font-size: 16px;
+
+}
+
+
+.dashboard-stat-menu:hover {
+
+    background: var(--background);
+
+    color: var(--text);
+
+}
+
+
+.dashboard-stat-title {
+
+    margin-top: 14px;
+
+    color: var(--text-secondary);
+
+    font-size: 10px;
+
+    font-weight: 500;
+
+}
+
+
+.dashboard-stat-value {
+
+    margin-top: 3px;
+
+    color: var(--dark);
+
+    font-size: 22px;
+
+    line-height: 1.2;
+
+    font-weight: 700;
+
+}
+
+
+.dashboard-stat-footer {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    margin-top: 7px;
+
+    font-size: 9px;
+
+}
+
+
+.dashboard-stat-change {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 2px;
+
+    font-weight: 700;
+
+}
+
+
+.dashboard-stat-change.positive {
+
+    color: var(--success);
+
+}
+
+
+.dashboard-stat-change.negative {
+
+    color: var(--danger);
+
+}
+
+
+.dashboard-stat-description {
+
+    color: var(--text-light);
+
+}
+
+
+/* =========================================================
+   4. DASHBOARD MAIN GRID
+========================================================= */
+
+.dashboard-main-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 2fr)
+        minmax(280px, 1fr);
+
+    gap: 18px;
+
+    margin-bottom: 20px;
+
+}
+
+
+/* =========================================================
+   5. DASHBOARD CARD
+========================================================= */
+
+.dashboard-panel {
+
+    min-width: 0;
+
+    background: #ffffff;
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 11px;
+
+    box-shadow: var(--shadow-small);
+
+    overflow: hidden;
+
+}
+
+
+.dashboard-panel-header {
+
+    min-height: 65px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 12px;
+
+    padding: 15px 18px;
+
+    border-bottom:
+        1px solid var(--border);
+
+}
+
+
+.dashboard-panel-title h3 {
+
+    color: var(--dark);
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+}
+
+
+.dashboard-panel-title p {
+
+    margin-top: 2px;
+
+    color: var(--text-secondary);
+
+    font-size: 10px;
+
+}
+
+
+.dashboard-panel-actions {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+}
+
+
+/* =========================================================
+   6. PERIOD FILTER
+========================================================= */
+
+.dashboard-period-select {
+
+    height: 32px;
+
+    padding: 0 8px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 6px;
+
+    outline: none;
+
+    background: #ffffff;
+
+    color: var(--text-secondary);
+
+    font-size: 10px;
+
+}
+
+
+.dashboard-period-select:focus {
+
+    border-color: var(--primary);
+
+}
+
+
+/* =========================================================
+   7. CHART AREA
+========================================================= */
+
+.dashboard-chart-container {
+
+    position: relative;
+
+    width: 100%;
+
+    height: 300px;
+
+    padding: 20px;
+
+}
+
+
+.dashboard-chart {
+
+    width: 100%;
+
+    height: 100%;
+
+}
+
+
+.chart-placeholder {
+
+    width: 100%;
+
+    height: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-direction: column;
+
+    gap: 8px;
+
+    border-radius: 8px;
+
+    background: #fafafa;
+
+    color: var(--text-secondary);
+
+}
+
+
+.chart-placeholder-icon {
+
+    font-size: 28px;
+
+    opacity: 0.5;
+
+}
+
+
+.chart-placeholder span {
+
+    font-size: 11px;
+
+}
+
+
+/* =========================================================
+   8. CHART LEGEND
+========================================================= */
+
+.chart-legend {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 18px;
+
+    flex-wrap: wrap;
+
+}
+
+
+.chart-legend-item {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 5px;
+
+    color: var(--text-secondary);
+
+    font-size: 10px;
+
+}
+
+
+.chart-legend-dot {
+
+    width: 8px;
+
+    height: 8px;
+
+    border-radius: 50%;
+
+}
+
+
+.chart-legend-dot.sales {
+
+    background: #2563eb;
+
+}
+
+
+.chart-legend-dot.purchases {
+
+    background: #16a34a;
+
+}
+
+
+/* =========================================================
+   9. QUICK ACTIONS
+========================================================= */
+
+.quick-actions-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 10px;
+
+    padding: 16px;
+
+}
+
+
+.quick-action {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    min-height: 65px;
+
+    padding: 10px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 8px;
+
+    background: #ffffff;
+
+    transition: var(--transition);
+
+}
+
+
+.quick-action:hover {
+
+    border-color: var(--primary);
+
+    background: var(--primary-light);
+
+    transform: translateY(-1px);
+
+}
+
+
+.quick-action-icon {
+
+    width: 35px;
+
+    height: 35px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 8px;
+
+    background: var(--primary-light);
+
+    font-size: 16px;
+
+}
+
+
+.quick-action-content {
+
+    min-width: 0;
+
+}
+
+
+.quick-action-content strong {
+
+    display: block;
+
+    color: var(--dark);
+
+    font-size: 10px;
+
+}
+
+
+.quick-action-content span {
+
+    display: block;
+
+    margin-top: 2px;
+
+    color: var(--text-secondary);
+
+    font-size: 9px;
+
+}
+
+
+/* =========================================================
+   10. RECENT TRANSACTIONS
+========================================================= */
+
+.recent-transactions {
+
+    width: 100%;
+
+}
+
+
+.transaction-row {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 12px 18px;
+
+    border-bottom:
+        1px solid var(--border);
+
+    transition: var(--transition);
+
+}
+
+
+.transaction-row:hover {
+
+    background: #fafafa;
+
+}
+
+
+.transaction-row:last-child {
+
+    border-bottom: 0;
+
+}
+
+
+.transaction-icon {
+
+    width: 35px;
+
+    height: 35px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 8px;
+
+    font-size: 14px;
+
+}
+
+
+.transaction-icon.sale {
+
+    background: var(--success-light);
+
+}
+
+
+.transaction-icon.purchase {
+
+    background: var(--primary-light);
+
+}
+
+
+.transaction-icon.return {
+
+    background: var(--warning-light);
+
+}
+
+
+.transaction-details {
+
+    min-width: 0;
+
+    flex: 1;
+
+}
+
+
+.transaction-details strong {
+
+    display: block;
+
+    overflow: hidden;
+
+    white-space: nowrap;
+
+    text-overflow: ellipsis;
+
+    color: var(--dark);
+
+    font-size: 11px;
+
+}
+
+
+.transaction-details span {
+
+    display: block;
+
+    margin-top: 2px;
+
+    color: var(--text-secondary);
+
+    font-size: 9px;
+
+}
+
+
+.transaction-amount {
+
+    text-align: right;
+
+}
+
+
+.transaction-amount strong {
+
+    display: block;
+
+    font-size: 11px;
+
+}
+
+
+.transaction-amount span {
+
+    display: block;
+
+    margin-top: 2px;
+
+    font-size: 8px;
+
+    color: var(--text-light);
+
+}
+
+
+.amount-positive {
+
+    color: var(--success);
+
+}
+
+
+.amount-negative {
+
+    color: var(--danger);
+
+}
+
+
+/* =========================================================
+   11. LOW STOCK PRODUCTS
+========================================================= */
+
+.low-stock-list {
+
+    padding: 5px 0;
+
+}
+
+
+.low-stock-item {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 11px 18px;
+
+    border-bottom:
+        1px solid var(--border);
+
+}
+
+
+.low-stock-item:last-child {
+
+    border-bottom: 0;
+
+}
+
+
+.low-stock-product-image {
+
+    width: 35px;
+
+    height: 35px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    overflow: hidden;
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 7px;
+
+    background: #f9fafb;
+
+    color: var(--text-light);
+
+    font-size: 14px;
+
+}
+
+
+.low-stock-product-info {
+
+    min-width: 0;
+
+    flex: 1;
+
+}
+
+
+.low-stock-product-info strong {
+
+    display: block;
+
+    overflow: hidden;
+
+    white-space: nowrap;
+
+    text-overflow: ellipsis;
+
+    color: var(--dark);
+
+    font-size: 10px;
+
+}
+
+
+.low-stock-product-info span {
+
+    display: block;
+
+    margin-top: 2px;
+
+    color: var(--text-secondary);
+
+    font-size: 8px;
+
+}
+
+
+.low-stock-quantity {
+
+    text-align: right;
+
+}
+
+
+.low-stock-quantity strong {
+
+    display: block;
+
+    color: var(--danger);
+
+    font-size: 11px;
+
+}
+
+
+.low-stock-quantity span {
+
+    display: block;
+
+    margin-top: 1px;
+
+    color: var(--text-light);
+
+    font-size: 8px;
+
+}
+
+
+/* =========================================================
+   12. TOP SELLING PRODUCTS
+========================================================= */
+
+.top-products-list {
+
+    padding: 4px 0;
+
+}
+
+
+.top-product-item {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 11px 18px;
+
+    border-bottom:
+        1px solid var(--border);
+
+}
+
+
+.top-product-item:last-child {
+
+    border-bottom: 0;
+
+}
+
+
+.top-product-rank {
+
+    width: 24px;
+
+    height: 24px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 6px;
+
+    background: var(--background);
+
+    color: var(--text-secondary);
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+}
+
+
+.top-product-info {
+
+    min-width: 0;
+
+    flex: 1;
+
+}
+
+
+.top-product-info strong {
+
+    display: block;
+
+    overflow: hidden;
+
+    white-space: nowrap;
+
+    text-overflow: ellipsis;
+
+    color: var(--dark);
+
+    font-size: 10px;
+
+}
+
+
+.top-product-info span {
+
+    display: block;
+
+    margin-top: 2px;
+
+    color: var(--text-secondary);
+
+    font-size: 8px;
+
+}
+
+
+.top-product-sales {
+
+    text-align: right;
+
+}
+
+
+.top-product-sales strong {
+
+    display: block;
+
+    color: var(--dark);
+
+    font-size: 10px;
+
+}
+
+
+.top-product-sales span {
+
+    display: block;
+
+    margin-top: 2px;
+
+    color: var(--text-secondary);
+
+    font-size: 8px;
+
+}
+
+
+/* =========================================================
+   13. DASHBOARD BOTTOM GRID
+========================================================= */
+
+.dashboard-bottom-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 18px;
+
+    margin-bottom: 20px;
+
+}
+
+
+/* =========================================================
+   14. INVENTORY SUMMARY
+========================================================= */
+
+.inventory-summary {
+
+    padding: 18px;
+
+}
+
+
+.inventory-summary-item {
+
+    margin-bottom: 17px;
+
+}
+
+
+.inventory-summary-item:last-child {
+
+    margin-bottom: 0;
+
+}
+
+
+.inventory-summary-header {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 10px;
+
+    margin-bottom: 6px;
+
+}
+
+
+.inventory-summary-header span {
+
+    color: var(--text-secondary);
+
+    font-size: 10px;
+
+}
+
+
+.inventory-summary-header strong {
+
+    color: var(--dark);
+
+    font-size: 10px;
+
+}
+
+
+.progress-bar {
+
+    width: 100%;
+
+    height: 7px;
+
+    overflow: hidden;
+
+    border-radius: 10px;
+
+    background: #f3f4f6;
+
+}
+
+
+.progress-bar-fill {
+
+    height: 100%;
+
+    border-radius: inherit;
+
+    transition: width 0.4s ease;
+
+}
+
+
+.progress-blue {
+
+    background: #2563eb;
+
+}
+
+
+.progress-green {
+
+    background: #16a34a;
+
+}
+
+
+.progress-orange {
+
+    background: #d97706;
+
+}
+
+
+.progress-red {
+
+    background: #dc2626;
+
+}
+
+
+/* =========================================================
+   15. SALES SUMMARY
+========================================================= */
+
+.sales-summary-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 10px;
+
+    padding: 16px;
+
+}
+
+
+.sales-summary-card {
+
+    padding: 14px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius: 8px;
+
+    background: #fafafa;
+
+}
+
+
+.sales-summary-card span {
+
+    display: block;
+
+    color: var(--text-secondary);
+
+    font-size: 9px;
+
+}
+
+
+.sales-summary-card strong {
+
+    display: block;
+
+    margin-top: 5px;
+
+    color: var(--dark);
+
+    font-size: 17px;
+
+}
+
+
+.sales-summary-card small {
+
+    display: block;
+
+    margin-top: 3px;
+
+    color: var(--success);
+
+    font-size: 8px;
+
+}
+
+
+/* =========================================================
+   16. ACTIVITY TIMELINE
+========================================================= */
+
+.activity-timeline {
+
+    position: relative;
+
+    padding: 18px;
+
+}
+
+
+.activity-timeline::before {
+
+    content: "";
+
+    position: absolute;
+
+    top: 26px;
+
+    bottom: 26px;
+
+    left: 31px;
+
+    width: 1px;
+
+    background: var(--border);
+
+}
+
+
+.activity-item {
+
+    position: relative;
+
+    display: flex;
+
+    gap: 12px;
+
+    margin-bottom: 18px;
+
+}
+
+
+.activity-item:last-child {
+
+    margin-bottom: 0;
+
+}
+
+
+.activity-icon {
+
+    position: relative;
+
+    z-index: 1;
+
+    width: 27px;
+
+    height: 27px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border:
+        3px solid #ffffff;
+
+    border-radius: 50%;
+
+    background: var(--primary);
+
+    font-size: 9px;
+
+}
+
+
+.activity-content {
+
+    min-width: 0;
+
+    padding-top: 1px;
+
+}
+
+
+.activity-content strong {
+
+    display: block;
+
+    color: var(--dark);
+
+    font-size: 10px;
+
+}
+
+
+.activity-content p {
+
+    margin-top: 2px;
+
+    color: var(--text-secondary);
+
+    font-size: 9px;
+
+}
+
+
+.activity-content time {
+
+    display: block;
+
+    margin-top: 3px;
+
+    color: var(--text-light);
+
+    font-size: 8px;
+
+}
+
+
+/* =========================================================
+   17. DASHBOARD ALERT
+========================================================= */
+
+.dashboard-alert {
+
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 12px;
+
+    padding: 13px 15px;
+
+    margin-bottom: 16px;
+
+    border:
+        1px solid #fde68a;
+
+    border-radius: 8px;
+
+    background: #fffbeb;
+
+}
+
+
+.dashboard-alert-icon {
+
+    font-size: 16px;
+
+}
+
+
+.dashboard-alert-content {
+
+    flex: 1;
+
+}
+
+
+.dashboard-alert-content strong {
+
+    display: block;
+
+    color: #92400e;
+
+    font-size: 11px;
+
+}
+
+
+.dashboard-alert-content p {
+
+    margin-top: 2px;
+
+    color: #a16207;
+
+    font-size: 9px;
+
+}
+
+
+.dashboard-alert-action {
+
+    color: #92400e;
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+}
+
+
+/* =========================================================
+   18. DASHBOARD EMPTY STATE
+========================================================= */
+
+.dashboard-empty {
+
+    padding: 35px 20px;
+
+    text-align: center;
+
+}
+
+
+.dashboard-empty-icon {
+
+    width: 45px;
+
+    height: 45px;
+
+    margin: 0 auto 10px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: var(--background);
+
+    font-size: 20px;
+
+}
+
+
+.dashboard-empty strong {
+
+    display: block;
+
+    color: var(--dark);
+
+    font-size: 11px;
+
+}
+
+
+.dashboard-empty p {
+
+    margin-top: 3px;
+
+    color: var(--text-secondary);
+
+    font-size: 9px;
+
+}
+
+
+/* =========================================================
+   19. DASHBOARD RESPONSIVE
+========================================================= */
+
+@media (max-width: 1200px) {
+
+    .dashboard-stats {
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+    }
+
+
+    .dashboard-main-grid {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+}
+
+
+@media (max-width: 800px) {
+
+    .dashboard-bottom-grid {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    .dashboard-welcome {
+
+        align-items: flex-start;
+
+        flex-direction: column;
+
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .dashboard-stats {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    .quick-actions-grid {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    .sales-summary-grid {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    .dashboard-welcome {
+
+        padding: 18px;
+
+    }
+
+
+    .dashboard-welcome-content h2 {
+
+        font-size: 18px;
+
+    }
+
+
+    .dashboard-chart-container {
+
+        height: 240px;
+
+        padding: 12px;
+
+    }
+
+
+    .dashboard-panel-header {
+
+        padding: 13px;
+
+    }
+
+}
+
+
+/* =========================================================
+   END OF DASHBOARD.CSS
+========================================================= */

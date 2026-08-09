@@ -1,0 +1,873 @@
+/* =========================================================
+   INVENTORY MANAGEMENT SYSTEM
+   RESPONSIVE STYLESHEET
+   File: css/responsive.css
+========================================================= */
+
+
+/* =========================================================
+   1. LARGE DESKTOP
+========================================================= */
+
+@media (min-width: 1400px) {
+
+    .main-content {
+        max-width: 1600px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .dashboard-grid {
+        grid-template-columns:
+            repeat(4, minmax(0, 1fr));
+    }
+
+    .stats-grid {
+        grid-template-columns:
+            repeat(4, minmax(0, 1fr));
+    }
+
+}
+
+
+/* =========================================================
+   2. DESKTOP / LAPTOP
+========================================================= */
+
+@media (max-width: 1200px) {
+
+    .sidebar {
+        width: 220px;
+    }
+
+    .main-content {
+        margin-left: 220px;
+    }
+
+    .dashboard-grid {
+        grid-template-columns:
+            repeat(3, minmax(0, 1fr));
+    }
+
+    .stats-grid {
+        grid-template-columns:
+            repeat(3, minmax(0, 1fr));
+    }
+
+    .content-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+/* =========================================================
+   3. TABLET
+========================================================= */
+
+@media (max-width: 1000px) {
+
+    /* -----------------------------
+       SIDEBAR
+    ----------------------------- */
+
+    .sidebar {
+        width: 70px;
+    }
+
+    .sidebar-logo {
+        justify-content: center;
+        padding: 15px 5px;
+    }
+
+    .sidebar-logo-text {
+        display: none;
+    }
+
+    .sidebar-menu-title {
+        display: none;
+    }
+
+    .sidebar-link {
+        justify-content: center;
+        padding: 11px 5px;
+    }
+
+    .sidebar-link i {
+        margin: 0;
+        font-size: 14px;
+    }
+
+    .sidebar-link span {
+        display: none;
+    }
+
+    .sidebar-link .arrow {
+        display: none;
+    }
+
+    .sidebar-footer {
+        padding: 8px 5px;
+    }
+
+    .sidebar-user {
+        justify-content: center;
+    }
+
+    .sidebar-user-info {
+        display: none;
+    }
+
+
+    /* -----------------------------
+       MAIN CONTENT
+    ----------------------------- */
+
+    .main-content {
+        margin-left: 70px;
+    }
+
+
+    /* -----------------------------
+       HEADER
+    ----------------------------- */
+
+    .topbar {
+        padding: 0 18px;
+    }
+
+    .topbar-title h1 {
+        font-size: 15px;
+    }
+
+    .topbar-title p {
+        display: none;
+    }
+
+
+    /* -----------------------------
+       DASHBOARD
+    ----------------------------- */
+
+    .dashboard-grid,
+    .stats-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+    .dashboard-container {
+        padding: 18px;
+    }
+
+
+    /* -----------------------------
+       CONTENT
+    ----------------------------- */
+
+    .content-grid-2 {
+        grid-template-columns: 1fr;
+    }
+
+    .content-grid-3 {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+
+    /* -----------------------------
+       FORMS
+    ----------------------------- */
+
+    .form-grid-3 {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+    .form-grid-4 {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+}
+
+
+/* =========================================================
+   4. SMALL TABLET / LARGE PHONE
+========================================================= */
+
+@media (max-width: 768px) {
+
+    /* -----------------------------
+       SIDEBAR
+    ----------------------------- */
+
+    .sidebar {
+        width: 0;
+        overflow: hidden;
+        transform: translateX(-100%);
+        transition: transform 0.25s ease;
+        z-index: 1000;
+    }
+
+    .sidebar.mobile-open {
+        width: 240px;
+        transform: translateX(0);
+    }
+
+    .sidebar.mobile-open .sidebar-logo-text,
+    .sidebar.mobile-open .sidebar-menu-title,
+    .sidebar.mobile-open .sidebar-link span,
+    .sidebar.mobile-open .sidebar-link .arrow,
+    .sidebar.mobile-open .sidebar-user-info {
+        display: block;
+    }
+
+    .sidebar.mobile-open .sidebar-logo {
+        justify-content: flex-start;
+        padding: 15px 18px;
+    }
+
+    .sidebar.mobile-open .sidebar-link {
+        justify-content: flex-start;
+        padding: 11px 15px;
+    }
+
+    .sidebar.mobile-open .sidebar-link i {
+        margin-right: 10px;
+    }
+
+    .sidebar.mobile-open .sidebar-user {
+        justify-content: flex-start;
+    }
+
+
+    /* -----------------------------
+       SIDEBAR OVERLAY
+    ----------------------------- */
+
+    .sidebar-overlay {
+        position: fixed;
+        inset: 0;
+        z-index: 999;
+        display: none;
+        background: rgba(15, 23, 42, 0.45);
+    }
+
+    .sidebar-overlay.active {
+        display: block;
+    }
+
+
+    /* -----------------------------
+       MAIN CONTENT
+    ----------------------------- */
+
+    .main-content {
+        width: 100%;
+        margin-left: 0;
+    }
+
+
+    /* -----------------------------
+       TOPBAR
+    ----------------------------- */
+
+    .topbar {
+        height: 58px;
+        padding: 0 13px;
+    }
+
+    .menu-toggle {
+        display: flex;
+    }
+
+    .topbar-left {
+        gap: 8px;
+    }
+
+    .topbar-title h1 {
+        font-size: 14px;
+    }
+
+    .topbar-right {
+        gap: 5px;
+    }
+
+    .topbar-icon {
+        width: 32px;
+        height: 32px;
+    }
+
+    .topbar-user {
+        padding-left: 5px;
+    }
+
+    .topbar-user-info {
+        display: none;
+    }
+
+
+    /* -----------------------------
+       PAGE CONTENT
+    ----------------------------- */
+
+    .page-content {
+        padding: 15px;
+    }
+
+    .page-header {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .page-header-actions {
+        width: 100%;
+    }
+
+    .page-header-actions button {
+        flex: 1;
+    }
+
+
+    /* -----------------------------
+       DASHBOARD
+    ----------------------------- */
+
+    .dashboard-container {
+        padding: 15px;
+    }
+
+    .dashboard-grid,
+    .stats-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+        gap: 12px;
+    }
+
+    .stat-card {
+        padding: 13px;
+    }
+
+    .stat-card-value {
+        font-size: 18px;
+    }
+
+    .chart-card {
+        min-height: 280px;
+    }
+
+
+    /* -----------------------------
+       CONTENT GRIDS
+    ----------------------------- */
+
+    .content-grid-3 {
+        grid-template-columns: 1fr;
+    }
+
+    .content-grid-2 {
+        grid-template-columns: 1fr;
+    }
+
+
+    /* -----------------------------
+       CARDS
+    ----------------------------- */
+
+    .card-header {
+        padding: 13px 14px;
+    }
+
+    .card-body {
+        padding: 14px;
+    }
+
+
+    /* -----------------------------
+       TABLES
+    ----------------------------- */
+
+    .table-card {
+        border-radius: 8px;
+    }
+
+    .table-card-header {
+        padding: 12px;
+    }
+
+    .table-wrapper {
+        overflow-x: auto;
+    }
+
+    .data-table {
+        min-width: 750px;
+    }
+
+
+    /* -----------------------------
+       FORMS
+    ----------------------------- */
+
+    .form-body {
+        padding: 15px;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-grid-3,
+    .form-grid-4 {
+        grid-template-columns: 1fr;
+    }
+
+    .product-form-layout {
+        grid-template-columns: 1fr;
+    }
+
+
+    /* -----------------------------
+       MODALS
+    ----------------------------- */
+
+    .modal {
+        width: calc(100% - 30px);
+        max-width: 520px;
+        margin: 15px;
+    }
+
+    .modal-large {
+        width: calc(100% - 30px);
+    }
+
+
+    /* -----------------------------
+       FOOTER
+    ----------------------------- */
+
+    .footer {
+        padding: 12px 15px;
+        text-align: center;
+    }
+
+}
+
+
+/* =========================================================
+   5. MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    /* -----------------------------
+       GLOBAL
+    ----------------------------- */
+
+    html {
+        font-size: 14px;
+    }
+
+    body {
+        overflow-x: hidden;
+    }
+
+
+    /* -----------------------------
+       TOPBAR
+    ----------------------------- */
+
+    .topbar {
+        height: 55px;
+        padding: 0 10px;
+    }
+
+    .topbar-title h1 {
+        max-width: 150px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        font-size: 13px;
+    }
+
+    .topbar-right .notification-text {
+        display: none;
+    }
+
+
+    /* -----------------------------
+       PAGE CONTENT
+    ----------------------------- */
+
+    .page-content {
+        padding: 12px;
+    }
+
+    .page-title {
+        font-size: 17px;
+    }
+
+    .page-subtitle {
+        font-size: 9px;
+    }
+
+
+    /* -----------------------------
+       DASHBOARD
+    ----------------------------- */
+
+    .dashboard-container {
+        padding: 12px;
+    }
+
+    .dashboard-grid,
+    .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .stat-card {
+        min-height: 90px;
+    }
+
+    .stat-card-value {
+        font-size: 19px;
+    }
+
+    .stat-card-icon {
+        width: 38px;
+        height: 38px;
+        font-size: 14px;
+    }
+
+
+    /* -----------------------------
+       QUICK ACTIONS
+    ----------------------------- */
+
+    .quick-actions {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+        gap: 8px;
+    }
+
+    .quick-action {
+        padding: 11px 7px;
+    }
+
+
+    /* -----------------------------
+       CHARTS
+    ----------------------------- */
+
+    .chart-container {
+        height: 230px;
+    }
+
+    .chart-card {
+        min-height: 250px;
+    }
+
+
+    /* -----------------------------
+       BUTTONS
+    ----------------------------- */
+
+    .btn {
+        min-height: 35px;
+        padding: 0 10px;
+        font-size: 9px;
+    }
+
+    .btn span {
+        display: none;
+    }
+
+    .btn i {
+        margin: 0;
+    }
+
+
+    /* -----------------------------
+       PAGE HEADER BUTTONS
+    ----------------------------- */
+
+    .page-header-actions {
+        display: grid;
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+        gap: 7px;
+    }
+
+    .page-header-actions button {
+        width: 100%;
+    }
+
+
+    /* -----------------------------
+       SEARCH
+    ----------------------------- */
+
+    .search-box {
+        width: 100%;
+    }
+
+
+    /* -----------------------------
+       TABLE
+    ----------------------------- */
+
+    .table-card-header {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .table-card-actions {
+        width: 100%;
+    }
+
+    .table-search {
+        width: 100%;
+    }
+
+    .table-toolbar {
+        padding: 10px;
+    }
+
+
+    /* -----------------------------
+       FORMS
+    ----------------------------- */
+
+    .form-card-header {
+        padding: 14px;
+    }
+
+    .form-body {
+        padding: 13px;
+    }
+
+    .form-section {
+        margin-bottom: 20px;
+    }
+
+    .form-actions {
+        gap: 7px;
+    }
+
+    .form-actions-left {
+        flex-direction: column;
+    }
+
+    .form-actions-left .form-button {
+        width: 100%;
+    }
+
+    .form-button {
+        width: 100%;
+    }
+
+
+    /* -----------------------------
+       PRODUCT FORM
+    ----------------------------- */
+
+    .product-form-sidebar {
+        display: block;
+    }
+
+    .product-form-sidebar .form-card {
+        margin-bottom: 12px;
+    }
+
+
+    /* -----------------------------
+       IMAGE UPLOAD
+    ----------------------------- */
+
+    .image-upload {
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .image-upload-content {
+        width: 100%;
+        text-align: center;
+    }
+
+
+    /* -----------------------------
+       MODALS
+    ----------------------------- */
+
+    .modal {
+        width: calc(100% - 20px);
+        max-height: calc(100vh - 20px);
+        margin: 10px;
+        border-radius: 9px;
+    }
+
+    .modal-header {
+        padding: 13px;
+    }
+
+    .modal-body {
+        padding: 13px;
+    }
+
+    .modal-footer {
+        padding: 11px 13px;
+    }
+
+
+    /* -----------------------------
+       PAGINATION
+    ----------------------------- */
+
+    .table-footer {
+        padding: 10px;
+    }
+
+    .table-footer-info {
+        text-align: center;
+    }
+
+    .pagination-button {
+        width: 27px;
+        height: 27px;
+    }
+
+
+    /* -----------------------------
+       FOOTER
+    ----------------------------- */
+
+    .footer {
+        font-size: 8px;
+    }
+
+}
+
+
+/* =========================================================
+   6. VERY SMALL PHONES
+========================================================= */
+
+@media (max-width: 400px) {
+
+    .page-content,
+    .dashboard-container {
+        padding: 9px;
+    }
+
+    .topbar-title h1 {
+        max-width: 120px;
+        font-size: 12px;
+    }
+
+    .topbar-icon {
+        width: 29px;
+        height: 29px;
+    }
+
+    .page-header-actions {
+        grid-template-columns: 1fr;
+    }
+
+    .quick-actions {
+        grid-template-columns: 1fr;
+    }
+
+    .stat-card {
+        padding: 11px;
+    }
+
+    .stat-card-value {
+        font-size: 17px;
+    }
+
+    .form-card-header h2 {
+        font-size: 13px;
+    }
+
+}
+
+
+/* =========================================================
+   7. LANDSCAPE PHONES
+========================================================= */
+
+@media (max-height: 500px) and (orientation: landscape) {
+
+    .topbar {
+        height: 50px;
+    }
+
+    .sidebar {
+        overflow-y: auto;
+    }
+
+    .sidebar-menu {
+        max-height: calc(100vh - 100px);
+        overflow-y: auto;
+    }
+
+    .modal {
+        max-height: calc(100vh - 15px);
+    }
+
+}
+
+
+/* =========================================================
+   8. PRINT STYLES
+========================================================= */
+
+@media print {
+
+    .sidebar,
+    .topbar,
+    .sidebar-overlay,
+    .page-header-actions,
+    .table-toolbar,
+    .table-card-actions,
+    .table-actions,
+    .form-actions,
+    .footer {
+        display: none !important;
+    }
+
+    .main-content {
+        width: 100%;
+        margin: 0 !important;
+    }
+
+    .page-content {
+        padding: 0;
+    }
+
+    .table-card,
+    .card,
+    .form-card {
+        border: 1px solid #ddd;
+        box-shadow: none;
+    }
+
+    .table-wrapper {
+        overflow: visible;
+    }
+
+    .data-table {
+        min-width: 0;
+    }
+
+    body {
+        background: #ffffff;
+    }
+
+}
+
+
+/* =========================================================
+   END OF RESPONSIVE.CSS
+========================================================= */

@@ -1,0 +1,1824 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Purchase Management - Inventory Management System"
+    >
+
+    <title>Purchases | Inventory Management System</title>
+
+
+    <!-- GLOBAL CSS -->
+
+    <link
+        rel="stylesheet"
+        href="../css/style.css"
+    >
+
+    <!-- TABLE CSS -->
+
+    <link
+        rel="stylesheet"
+        href="../css/tables.css"
+    >
+
+    <!-- FORMS CSS -->
+
+    <link
+        rel="stylesheet"
+        href="../css/forms.css"
+    >
+
+    <!-- RESPONSIVE CSS -->
+
+    <link
+        rel="stylesheet"
+        href="../css/responsive.css"
+    >
+
+</head>
+
+
+<body onload="checkAuthentication()">
+
+
+    <!-- =========================================
+         APPLICATION CONTAINER
+    ========================================== -->
+
+    <div class="app-container">
+
+
+        <!-- =========================================
+             SIDEBAR
+        ========================================== -->
+
+        <aside
+            class="sidebar"
+            id="sidebar"
+        >
+
+
+            <!-- LOGO -->
+
+            <div class="sidebar-logo">
+
+                <div class="sidebar-logo-icon">
+                    IMS
+                </div>
+
+                <div class="sidebar-logo-text">
+
+                    <h2>
+                        InventoryPro
+                    </h2>
+
+                    <span>
+                        Management System
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- NAVIGATION -->
+
+            <nav class="sidebar-navigation">
+
+
+                <!-- MAIN -->
+
+                <div class="nav-section">
+
+                    <p class="nav-section-title">
+                        MAIN
+                    </p>
+
+
+                    <a
+                        href="dashboard.html"
+                        class="nav-link"
+                    >
+
+                        <span class="nav-icon">
+                            📊
+                        </span>
+
+                        <span>
+                            Dashboard
+                        </span>
+
+                    </a>
+
+
+                    <a
+                        href="products.html"
+                        class="nav-link"
+                    >
+
+                        <span class="nav-icon">
+                            📦
+                        </span>
+
+                        <span>
+                            Products
+                        </span>
+
+                    </a>
+
+
+                    <a
+                        href="categories.html"
+                        class="nav-link"
+                    >
+
+                        <span class="nav-icon">
+                            🏷️
+                        </span>
+
+                        <span>
+                            Categories
+                        </span>
+
+                    </a>
+
+                </div>
+
+
+                <!-- TRANSACTIONS -->
+
+                <div class="nav-section">
+
+                    <p class="nav-section-title">
+                        TRANSACTIONS
+                    </p>
+
+
+                    <a
+                        href="sales.html"
+                        class="nav-link"
+                    >
+
+                        <span class="nav-icon">
+                            💰
+                        </span>
+
+                        <span>
+                            Sales
+                        </span>
+
+                    </a>
+
+
+                    <a
+                        href="purchases.html"
+                        class="nav-link active"
+                    >
+
+                        <span class="nav-icon">
+                            🛒
+                        </span>
+
+                        <span>
+                            Purchases
+                        </span>
+
+                    </a>
+
+                </div>
+
+
+                <!-- MANAGEMENT -->
+
+                <div class="nav-section">
+
+                    <p class="nav-section-title">
+                        MANAGEMENT
+                    </p>
+
+
+                    <a
+                        href="suppliers.html"
+                        class="nav-link"
+                    >
+
+                        <span class="nav-icon">
+                            🚚
+                        </span>
+
+                        <span>
+                            Suppliers
+                        </span>
+
+                    </a>
+
+
+                    <a
+                        href="customers.html"
+                        class="nav-link"
+                    >
+
+                        <span class="nav-icon">
+                            👥
+                        </span>
+
+                        <span>
+                            Customers
+                        </span>
+
+                    </a>
+
+                </div>
+
+
+                <!-- ANALYTICS -->
+
+                <div class="nav-section">
+
+                    <p class="nav-section-title">
+                        ANALYTICS
+                    </p>
+
+
+                    <a
+                        href="reports.html"
+                        class="nav-link"
+                    >
+
+                        <span class="nav-icon">
+                            📈
+                        </span>
+
+                        <span>
+                            Reports
+                        </span>
+
+                    </a>
+
+                </div>
+
+
+                <!-- SYSTEM -->
+
+                <div class="nav-section">
+
+                    <p class="nav-section-title">
+                        SYSTEM
+                    </p>
+
+
+                    <a
+                        href="settings.html"
+                        class="nav-link"
+                    >
+
+                        <span class="nav-icon">
+                            ⚙️
+                        </span>
+
+                        <span>
+                            Settings
+                        </span>
+
+                    </a>
+
+                </div>
+
+            </nav>
+
+
+            <!-- USER -->
+
+            <div class="sidebar-user">
+
+                <div class="sidebar-user-avatar">
+                    A
+                </div>
+
+                <div class="sidebar-user-info">
+
+                    <strong id="sidebarUserName">
+                        Admin
+                    </strong>
+
+                    <span>
+                        Administrator
+                    </span>
+
+                </div>
+
+                <button
+                    class="sidebar-logout"
+                    onclick="logout()"
+                    title="Logout"
+                >
+                    ↪
+                </button>
+
+            </div>
+
+        </aside>
+
+
+
+        <!-- =========================================
+             MAIN CONTENT
+        ========================================== -->
+
+        <main class="main-content">
+
+
+            <!-- =====================================
+                 TOPBAR
+            ====================================== -->
+
+            <header class="topbar">
+
+
+                <button
+                    class="mobile-menu-button"
+                    id="mobileMenuButton"
+                    aria-label="Open menu"
+                >
+                    ☰
+                </button>
+
+
+                <div class="topbar-title">
+
+                    <h1>
+                        Purchases
+                    </h1>
+
+                    <p>
+                        Manage suppliers and inventory purchases
+                    </p>
+
+                </div>
+
+
+                <div class="topbar-actions">
+
+
+                    <!-- SEARCH -->
+
+                    <div class="global-search">
+
+                        <span>
+                            🔍
+                        </span>
+
+                        <input
+                            type="search"
+                            id="globalSearch"
+                            placeholder="Search..."
+                        >
+
+                    </div>
+
+
+                    <!-- NOTIFICATION -->
+
+                    <button
+                        class="topbar-icon-button"
+                        id="notificationButton"
+                        title="Notifications"
+                    >
+
+                        🔔
+
+                        <span
+                            class="notification-badge"
+                            id="notificationCount"
+                        >
+                            0
+                        </span>
+
+                    </button>
+
+
+                    <!-- USER -->
+
+                    <div class="topbar-user">
+
+                        <div class="topbar-avatar">
+                            A
+                        </div>
+
+                        <div class="topbar-user-info">
+
+                            <strong id="topbarUserName">
+                                Admin
+                            </strong>
+
+                            <span>
+                                Administrator
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </header>
+
+
+
+            <!-- =====================================
+                 PAGE CONTENT
+            ====================================== -->
+
+            <section class="page-content">
+
+
+                <!-- =================================
+                     PAGE HEADER
+                ================================== -->
+
+                <div class="page-header">
+
+                    <div class="page-header-text">
+
+                        <h2>
+                            Purchase Management
+                        </h2>
+
+                        <p>
+                            Track inventory purchases,
+                            suppliers and purchase orders.
+                        </p>
+
+                    </div>
+
+
+                    <div class="page-header-actions">
+
+                        <button
+                            type="button"
+                            class="secondary-button"
+                            id="exportPurchasesButton"
+                        >
+
+                            ↓ Export
+
+                        </button>
+
+
+                        <button
+                            type="button"
+                            class="primary-action-button"
+                            id="newPurchaseButton"
+                        >
+
+                            + New Purchase
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =================================
+                     PURCHASE SUMMARY
+                ================================== -->
+
+                <div class="product-summary-grid">
+
+
+                    <!-- TODAY'S PURCHASES -->
+
+                    <div class="summary-card">
+
+                        <div class="summary-icon">
+                            🛒
+                        </div>
+
+                        <div>
+
+                            <span>
+                                Today's Purchases
+                            </span>
+
+                            <strong id="todayPurchases">
+                                ₹0.00
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- TOTAL PURCHASES -->
+
+                    <div class="summary-card">
+
+                        <div class="summary-icon">
+                            💰
+                        </div>
+
+                        <div>
+
+                            <span>
+                                Total Purchases
+                            </span>
+
+                            <strong id="totalPurchaseAmount">
+                                ₹0.00
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- PURCHASE ORDERS -->
+
+                    <div class="summary-card">
+
+                        <div class="summary-icon">
+                            📋
+                        </div>
+
+                        <div>
+
+                            <span>
+                                Purchase Orders
+                            </span>
+
+                            <strong id="totalPurchaseOrders">
+                                0
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- PENDING -->
+
+                    <div class="summary-card warning">
+
+                        <div class="summary-icon">
+                            ⏳
+                        </div>
+
+                        <div>
+
+                            <span>
+                                Pending Orders
+                            </span>
+
+                            <strong id="pendingPurchases">
+                                0
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =================================
+                     PURCHASE TABLE
+                ================================== -->
+
+                <div class="dashboard-card">
+
+
+                    <!-- TOOLBAR -->
+
+                    <div class="products-toolbar">
+
+
+                        <!-- SEARCH -->
+
+                        <div class="product-search">
+
+                            <span>
+                                🔍
+                            </span>
+
+                            <input
+                                type="search"
+                                id="purchaseSearch"
+                                placeholder="Search PO number, supplier..."
+                            >
+
+                        </div>
+
+
+                        <!-- DATE -->
+
+                        <div class="filter-control">
+
+                            <label for="purchaseDateFilter">
+                                Date
+                            </label>
+
+                            <select
+                                id="purchaseDateFilter"
+                            >
+
+                                <option value="all">
+                                    All Dates
+                                </option>
+
+                                <option value="today">
+                                    Today
+                                </option>
+
+                                <option value="week">
+                                    This Week
+                                </option>
+
+                                <option value="month">
+                                    This Month
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <!-- SUPPLIER -->
+
+                        <div class="filter-control">
+
+                            <label for="purchaseSupplierFilter">
+                                Supplier
+                            </label>
+
+                            <select
+                                id="purchaseSupplierFilter"
+                            >
+
+                                <option value="all">
+                                    All Suppliers
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <!-- STATUS -->
+
+                        <div class="filter-control">
+
+                            <label for="purchaseStatusFilter">
+                                Status
+                            </label>
+
+                            <select
+                                id="purchaseStatusFilter"
+                            >
+
+                                <option value="all">
+                                    All Status
+                                </option>
+
+                                <option value="received">
+                                    Received
+                                </option>
+
+                                <option value="pending">
+                                    Pending
+                                </option>
+
+                                <option value="cancelled">
+                                    Cancelled
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <!-- RESET -->
+
+                        <button
+                            type="button"
+                            class="reset-filter-button"
+                            id="resetPurchaseFilters"
+                        >
+                            Reset
+                        </button>
+
+                    </div>
+
+
+
+                    <!-- TABLE -->
+
+                    <div class="table-wrapper">
+
+                        <table
+                            class="data-table"
+                            id="purchasesTable"
+                        >
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>
+                                        PO Number
+                                    </th>
+
+                                    <th>
+                                        Supplier
+                                    </th>
+
+                                    <th>
+                                        Items
+                                    </th>
+
+                                    <th>
+                                        Purchase Date
+                                    </th>
+
+                                    <th>
+                                        Expected Date
+                                    </th>
+
+                                    <th>
+                                        Amount
+                                    </th>
+
+                                    <th>
+                                        Payment
+                                    </th>
+
+                                    <th>
+                                        Status
+                                    </th>
+
+                                    <th>
+                                        Actions
+                                    </th>
+
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody id="purchasesTableBody">
+
+
+                                <!-- EMPTY STATE -->
+
+                                <tr
+                                    id="emptyPurchasesRow"
+                                >
+
+                                    <td
+                                        colspan="9"
+                                        class="empty-table"
+                                    >
+
+                                        <div class="table-empty-state">
+
+                                            <div class="empty-state-icon">
+                                                🛒
+                                            </div>
+
+                                            <h3>
+                                                No Purchases Found
+                                            </h3>
+
+                                            <p>
+                                                No purchase records
+                                                have been created yet.
+                                            </p>
+
+                                            <button
+                                                type="button"
+                                                class="primary-action-button"
+                                                id="emptyNewPurchaseButton"
+                                            >
+                                                + Create First Purchase
+                                            </button>
+
+                                        </div>
+
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+
+
+                    <!-- TABLE FOOTER -->
+
+                    <div class="table-footer">
+
+
+                        <div
+                            class="table-results"
+                            id="purchaseTableResults"
+                        >
+                            Showing 0 purchases
+                        </div>
+
+
+                        <div class="pagination">
+
+                            <button
+                                type="button"
+                                class="pagination-button"
+                                id="previousPurchasePage"
+                                disabled
+                            >
+                                ←
+                            </button>
+
+
+                            <div
+                                id="purchasePaginationNumbers"
+                                class="pagination-numbers"
+                            >
+
+                                <button
+                                    type="button"
+                                    class="pagination-number active"
+                                >
+                                    1
+                                </button>
+
+                            </div>
+
+
+                            <button
+                                type="button"
+                                class="pagination-button"
+                                id="nextPurchasePage"
+                                disabled
+                            >
+                                →
+                            </button>
+
+                        </div>
+
+
+                        <div class="items-per-page">
+
+                            <label for="purchaseItemsPerPage">
+                                Show
+                            </label>
+
+                            <select id="purchaseItemsPerPage">
+
+                                <option value="10">
+                                    10
+                                </option>
+
+                                <option value="25">
+                                    25
+                                </option>
+
+                                <option value="50">
+                                    50
+                                </option>
+
+                            </select>
+
+                            <span>
+                                per page
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =================================
+                     SUPPLIER PURCHASE SUMMARY
+                ================================== -->
+
+                <div class="dashboard-lower-grid">
+
+
+                    <!-- RECENT SUPPLIERS -->
+
+                    <div class="dashboard-card">
+
+                        <div class="card-header">
+
+                            <div>
+
+                                <h3>
+                                    Top Suppliers
+                                </h3>
+
+                                <p>
+                                    Suppliers with the highest
+                                    purchase value
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div
+                            class="low-stock-list"
+                            id="topSuppliers"
+                        >
+
+                            <div class="empty-state">
+
+                                <div class="empty-icon">
+                                    🚚
+                                </div>
+
+                                <p>
+                                    No purchase data available.
+                                </p>
+
+                                <span>
+                                    Start recording purchases
+                                    to see supplier insights.
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- PAYMENT STATUS -->
+
+                    <div class="dashboard-card">
+
+                        <div class="card-header">
+
+                            <div>
+
+                                <h3>
+                                    Payment Summary
+                                </h3>
+
+                                <p>
+                                    Overview of purchase payments
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div
+                            class="payment-method-list"
+                            id="purchasePaymentSummary"
+                        >
+
+                            <div class="payment-method-item">
+
+                                <div class="payment-method-name">
+
+                                    <span>
+                                        ✅
+                                    </span>
+
+                                    Paid
+
+                                </div>
+
+                                <strong id="paidPurchaseAmount">
+                                    ₹0.00
+                                </strong>
+
+                            </div>
+
+
+                            <div class="payment-method-item">
+
+                                <div class="payment-method-name">
+
+                                    <span>
+                                        ⏳
+                                    </span>
+
+                                    Pending
+
+                                </div>
+
+                                <strong id="pendingPurchaseAmount">
+                                    ₹0.00
+                                </strong>
+
+                            </div>
+
+
+                            <div class="payment-method-item">
+
+                                <div class="payment-method-name">
+
+                                    <span>
+                                        💵
+                                    </span>
+
+                                    Cash
+
+                                </div>
+
+                                <strong id="cashPurchaseAmount">
+                                    ₹0.00
+                                </strong>
+
+                            </div>
+
+
+                            <div class="payment-method-item">
+
+                                <div class="payment-method-name">
+
+                                    <span>
+                                        🏦
+                                    </span>
+
+                                    Bank Transfer
+
+                                </div>
+
+                                <strong id="bankPurchaseAmount">
+                                    ₹0.00
+                                </strong>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+
+    <!-- =========================================
+         NEW PURCHASE MODAL
+    ========================================== -->
+
+    <div
+        class="modal-overlay"
+        id="purchaseModal"
+        style="display: none;"
+    >
+
+        <div class="modal large-modal">
+
+
+            <!-- HEADER -->
+
+            <div class="modal-header">
+
+                <div>
+
+                    <h2>
+                        Create New Purchase
+                    </h2>
+
+                    <p>
+                        Record a new inventory purchase.
+                    </p>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="modal-close"
+                    id="closePurchaseModal"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <!-- FORM -->
+
+            <form id="purchaseForm">
+
+
+                <div class="modal-body">
+
+
+                    <!-- =================================
+                         PURCHASE INFORMATION
+                    ================================== -->
+
+                    <div class="sale-form-section">
+
+                        <h3>
+                            Purchase Information
+                        </h3>
+
+
+                        <div class="form-grid">
+
+
+                            <!-- PO NUMBER -->
+
+                            <div class="form-group">
+
+                                <label for="purchaseOrderNumber">
+                                    PO Number
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="purchaseOrderNumber"
+                                    name="purchaseOrderNumber"
+                                    readonly
+                                >
+
+                            </div>
+
+
+                            <!-- PURCHASE DATE -->
+
+                            <div class="form-group">
+
+                                <label for="purchaseDate">
+
+                                    Purchase Date
+
+                                    <span class="required">
+                                        *
+                                    </span>
+
+                                </label>
+
+                                <input
+                                    type="date"
+                                    id="purchaseDate"
+                                    name="purchaseDate"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <!-- SUPPLIER -->
+
+                            <div class="form-group">
+
+                                <label for="purchaseSupplier">
+
+                                    Supplier
+
+                                    <span class="required">
+                                        *
+                                    </span>
+
+                                </label>
+
+                                <select
+                                    id="purchaseSupplier"
+                                    name="purchaseSupplier"
+                                    required
+                                >
+
+                                    <option value="">
+                                        Select Supplier
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                            <!-- EXPECTED DATE -->
+
+                            <div class="form-group">
+
+                                <label for="expectedDeliveryDate">
+                                    Expected Delivery
+                                </label>
+
+                                <input
+                                    type="date"
+                                    id="expectedDeliveryDate"
+                                    name="expectedDeliveryDate"
+                                >
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- =================================
+                         PRODUCTS
+                    ================================== -->
+
+                    <div class="sale-form-section">
+
+
+                        <div class="sale-section-header">
+
+                            <div>
+
+                                <h3>
+                                    Products
+                                </h3>
+
+                                <p>
+                                    Add products being purchased.
+                                </p>
+
+                            </div>
+
+
+                            <button
+                                type="button"
+                                class="secondary-button"
+                                id="addPurchaseItem"
+                            >
+                                + Add Product
+                            </button>
+
+                        </div>
+
+
+                        <div
+                            id="purchaseItemsContainer"
+                            class="sale-items-container"
+                        >
+
+
+                            <!-- DEFAULT ITEM -->
+
+                            <div
+                                class="sale-item-row purchase-item-row"
+                                data-item-index="0"
+                            >
+
+
+                                <!-- PRODUCT -->
+
+                                <div class="form-group">
+
+                                    <label>
+                                        Product
+                                    </label>
+
+                                    <select
+                                        class="purchase-product"
+                                        name="purchaseProduct[]"
+                                        required
+                                    >
+
+                                        <option value="">
+                                            Select Product
+                                        </option>
+
+                                    </select>
+
+                                </div>
+
+
+                                <!-- QUANTITY -->
+
+                                <div class="form-group">
+
+                                    <label>
+                                        Quantity
+                                    </label>
+
+                                    <input
+                                        type="number"
+                                        class="purchase-quantity"
+                                        name="purchaseQuantity[]"
+                                        min="1"
+                                        value="1"
+                                        required
+                                    >
+
+                                </div>
+
+
+                                <!-- PRICE -->
+
+                                <div class="form-group">
+
+                                    <label>
+                                        Unit Cost
+                                    </label>
+
+                                    <div class="currency-input">
+
+                                        <span>
+                                            ₹
+                                        </span>
+
+                                        <input
+                                            type="number"
+                                            class="purchase-price"
+                                            name="purchasePrice[]"
+                                            min="0"
+                                            step="0.01"
+                                            value="0"
+                                            required
+                                        >
+
+                                    </div>
+
+                                </div>
+
+
+                                <!-- TOTAL -->
+
+                                <div class="form-group">
+
+                                    <label>
+                                        Total
+                                    </label>
+
+                                    <div class="item-total purchase-item-total">
+                                        ₹0.00
+                                    </div>
+
+                                </div>
+
+
+                                <!-- REMOVE -->
+
+                                <button
+                                    type="button"
+                                    class="remove-purchase-item"
+                                    title="Remove product"
+                                    disabled
+                                >
+                                    ×
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- =================================
+                         PAYMENT
+                    ================================== -->
+
+                    <div class="sale-form-section">
+
+                        <h3>
+                            Payment Information
+                        </h3>
+
+
+                        <div class="form-grid">
+
+
+                            <!-- PAYMENT METHOD -->
+
+                            <div class="form-group">
+
+                                <label for="purchasePaymentMethod">
+
+                                    Payment Method
+
+                                    <span class="required">
+                                        *
+                                    </span>
+
+                                </label>
+
+                                <select
+                                    id="purchasePaymentMethod"
+                                    name="purchasePaymentMethod"
+                                    required
+                                >
+
+                                    <option value="">
+                                        Select Payment Method
+                                    </option>
+
+                                    <option value="cash">
+                                        Cash
+                                    </option>
+
+                                    <option value="upi">
+                                        UPI
+                                    </option>
+
+                                    <option value="card">
+                                        Card
+                                    </option>
+
+                                    <option value="bank">
+                                        Bank Transfer
+                                    </option>
+
+                                    <option value="credit">
+                                        Credit
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                            <!-- PAYMENT STATUS -->
+
+                            <div class="form-group">
+
+                                <label for="purchasePaymentStatus">
+
+                                    Payment Status
+
+                                    <span class="required">
+                                        *
+                                    </span>
+
+                                </label>
+
+                                <select
+                                    id="purchasePaymentStatus"
+                                    name="purchasePaymentStatus"
+                                    required
+                                >
+
+                                    <option value="paid">
+                                        Paid
+                                    </option>
+
+                                    <option value="pending">
+                                        Pending
+                                    </option>
+
+                                    <option value="partial">
+                                        Partially Paid
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- =================================
+                         PURCHASE TOTALS
+                    ================================== -->
+
+                    <div class="sale-total-section">
+
+
+                        <div class="sale-total-row">
+
+                            <span>
+                                Subtotal
+                            </span>
+
+                            <strong id="purchaseSubtotal">
+                                ₹0.00
+                            </strong>
+
+                        </div>
+
+
+                        <div class="sale-total-row">
+
+                            <span>
+                                Discount
+                            </span>
+
+                            <div class="discount-input">
+
+                                <input
+                                    type="number"
+                                    id="purchaseDiscount"
+                                    min="0"
+                                    value="0"
+                                    step="0.01"
+                                >
+
+                                <span>
+                                    ₹
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="sale-total-row">
+
+                            <span>
+                                Tax / GST
+                            </span>
+
+                            <div class="discount-input">
+
+                                <input
+                                    type="number"
+                                    id="purchaseTaxRate"
+                                    min="0"
+                                    max="100"
+                                    value="18"
+                                    step="0.01"
+                                >
+
+                                <span>
+                                    %
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="sale-total-row">
+
+                            <span>
+                                Tax Amount
+                            </span>
+
+                            <strong id="purchaseTaxAmount">
+                                ₹0.00
+                            </strong>
+
+                        </div>
+
+
+                        <div class="sale-total-row grand-total">
+
+                            <span>
+                                Grand Total
+                            </span>
+
+                            <strong id="purchaseGrandTotal">
+                                ₹0.00
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- NOTES -->
+
+                    <div class="form-group">
+
+                        <label for="purchaseNotes">
+                            Notes
+                        </label>
+
+                        <textarea
+                            id="purchaseNotes"
+                            name="purchaseNotes"
+                            rows="3"
+                            placeholder="Optional notes about this purchase..."
+                        ></textarea>
+
+                    </div>
+
+                </div>
+
+
+                <!-- FOOTER -->
+
+                <div class="modal-footer">
+
+                    <button
+                        type="button"
+                        class="secondary-button"
+                        id="cancelPurchase"
+                    >
+                        Cancel
+                    </button>
+
+
+                    <button
+                        type="submit"
+                        class="primary-action-button"
+                    >
+
+                        ✓ Save Purchase
+
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================================
+         VIEW PURCHASE MODAL
+    ========================================== -->
+
+    <div
+        class="modal-overlay"
+        id="viewPurchaseModal"
+        style="display: none;"
+    >
+
+        <div class="modal large-modal">
+
+
+            <div class="modal-header">
+
+                <div>
+
+                    <h2>
+                        Purchase Details
+                    </h2>
+
+                    <p>
+                        Complete purchase information.
+                    </p>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="modal-close"
+                    id="closeViewPurchaseModal"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <div
+                class="modal-body"
+                id="purchaseDetailsContent"
+            >
+
+                <!-- Generated by purchases.js -->
+
+            </div>
+
+
+            <div class="modal-footer">
+
+                <button
+                    type="button"
+                    class="secondary-button"
+                    id="closePurchaseDetails"
+                >
+                    Close
+                </button>
+
+
+                <button
+                    type="button"
+                    class="secondary-button"
+                    id="printPurchase"
+                >
+                    🖨 Print Purchase
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================================
+         CANCEL PURCHASE MODAL
+    ========================================== -->
+
+    <div
+        class="modal-overlay"
+        id="cancelPurchaseModal"
+        style="display: none;"
+    >
+
+        <div class="modal small-modal">
+
+
+            <div class="modal-header">
+
+                <h2>
+                    Cancel Purchase
+                </h2>
+
+
+                <button
+                    type="button"
+                    class="modal-close"
+                    id="closeCancelPurchaseModal"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <div class="modal-body delete-confirmation">
+
+                <div class="delete-icon">
+                    ⚠️
+                </div>
+
+                <h3>
+                    Cancel this purchase?
+                </h3>
+
+                <p>
+                    If the purchase has already been
+                    received, cancelling it may reduce
+                    the corresponding inventory quantity.
+                </p>
+
+            </div>
+
+
+            <div class="modal-footer">
+
+                <button
+                    type="button"
+                    class="secondary-button"
+                    id="keepPurchase"
+                >
+                    Keep Purchase
+                </button>
+
+
+                <button
+                    type="button"
+                    class="danger-button"
+                    id="confirmCancelPurchase"
+                >
+                    Cancel Purchase
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================================
+         JAVASCRIPT
+    ========================================== -->
+
+    <script src="../js/storage.js"></script>
+
+    <script src="../js/app.js"></script>
+
+    <script src="../js/purchases.js"></script>
+
+
+</body>
+
+</html>

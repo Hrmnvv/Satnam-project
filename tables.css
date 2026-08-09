@@ -1,0 +1,972 @@
+/* =========================================================
+   INVENTORY MANAGEMENT SYSTEM
+   TABLES STYLESHEET
+   File: css/tables.css
+========================================================= */
+
+
+/* =========================================================
+   1. TABLE CONTAINER
+========================================================= */
+
+.table-card {
+    width: 100%;
+    overflow: hidden;
+    background: #ffffff;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    box-shadow: var(--shadow-small);
+}
+
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.table-wrapper::-webkit-scrollbar {
+    height: 6px;
+}
+
+.table-wrapper::-webkit-scrollbar-track {
+    background: #f1f5f9;
+}
+
+.table-wrapper::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: #cbd5e1;
+}
+
+
+/* =========================================================
+   2. TABLE HEADER
+========================================================= */
+
+.table-card-header {
+    min-height: 62px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 14px 18px;
+    border-bottom: 1px solid var(--border);
+}
+
+.table-card-title {
+    min-width: 0;
+}
+
+.table-card-title h3 {
+    color: var(--dark);
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.table-card-title p {
+    margin-top: 3px;
+    color: var(--text-secondary);
+    font-size: 9px;
+}
+
+.table-card-actions {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+
+/* =========================================================
+   3. GENERAL TABLE
+========================================================= */
+
+.data-table {
+    width: 100%;
+    min-width: 700px;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+.data-table thead {
+    background: #f8fafc;
+}
+
+.data-table th {
+    padding: 11px 14px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text-secondary);
+    text-align: left;
+    white-space: nowrap;
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.2px;
+}
+
+.data-table td {
+    padding: 12px 14px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text);
+    font-size: 10px;
+    vertical-align: middle;
+}
+
+.data-table tbody tr {
+    transition: background 0.15s ease;
+}
+
+.data-table tbody tr:hover {
+    background: #fafcff;
+}
+
+.data-table tbody tr:last-child td {
+    border-bottom: 0;
+}
+
+
+/* =========================================================
+   4. TABLE ALIGNMENT
+========================================================= */
+
+.data-table th.center,
+.data-table td.center {
+    text-align: center;
+}
+
+.data-table th.right,
+.data-table td.right {
+    text-align: right;
+}
+
+.data-table th.nowrap,
+.data-table td.nowrap {
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   5. SORTABLE COLUMNS
+========================================================= */
+
+.sortable {
+    cursor: pointer;
+    user-select: none;
+}
+
+.sortable:hover {
+    color: var(--primary);
+}
+
+.sort-icon {
+    display: inline-flex;
+    margin-left: 3px;
+    color: var(--text-light);
+    font-size: 8px;
+}
+
+.sortable.active .sort-icon {
+    color: var(--primary);
+}
+
+
+/* =========================================================
+   6. TABLE CHECKBOX
+========================================================= */
+
+.table-checkbox {
+    width: 15px;
+    height: 15px;
+    accent-color: var(--primary);
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   7. TABLE ROW SELECTED
+========================================================= */
+
+.data-table tbody tr.selected {
+    background: #eff6ff;
+}
+
+.data-table tbody tr.selected td {
+    border-bottom-color: #dbeafe;
+}
+
+
+/* =========================================================
+   8. TABLE USER / CUSTOMER / SUPPLIER INFO
+========================================================= */
+
+.table-person {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    min-width: 150px;
+}
+
+.table-avatar {
+    width: 34px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    overflow: hidden;
+    border-radius: 50%;
+    background: var(--primary-light);
+    color: var(--primary);
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.table-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.table-person-info {
+    min-width: 0;
+}
+
+.table-person-info strong {
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: var(--dark);
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.table-person-info span {
+    display: block;
+    margin-top: 2px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: var(--text-secondary);
+    font-size: 8px;
+}
+
+
+/* =========================================================
+   9. TABLE PRODUCT INFO
+========================================================= */
+
+.table-product {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    min-width: 170px;
+}
+
+.table-product-image {
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    background: #f8fafc;
+    color: var(--text-light);
+    font-size: 14px;
+}
+
+.table-product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.table-product-info {
+    min-width: 0;
+}
+
+.table-product-info strong {
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: var(--dark);
+    font-size: 10px;
+}
+
+.table-product-info span {
+    display: block;
+    margin-top: 2px;
+    color: var(--text-secondary);
+    font-family: monospace;
+    font-size: 8px;
+}
+
+
+/* =========================================================
+   10. TABLE BADGES
+========================================================= */
+
+.table-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 21px;
+    padding: 3px 8px;
+    border-radius: 20px;
+    white-space: nowrap;
+    font-size: 8px;
+    font-weight: 700;
+}
+
+.table-badge.success {
+    background: var(--success-light);
+    color: var(--success);
+}
+
+.table-badge.warning {
+    background: var(--warning-light);
+    color: var(--warning);
+}
+
+.table-badge.danger {
+    background: var(--danger-light);
+    color: var(--danger);
+}
+
+.table-badge.info {
+    background: var(--primary-light);
+    color: var(--primary);
+}
+
+.table-badge.neutral {
+    background: #f1f5f9;
+    color: var(--text-secondary);
+}
+
+.table-badge.purple {
+    background: #faf5ff;
+    color: #9333ea;
+}
+
+
+/* =========================================================
+   11. STATUS DOT
+========================================================= */
+
+.status {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    white-space: nowrap;
+    font-size: 9px;
+    font-weight: 600;
+}
+
+.status-dot {
+    width: 7px;
+    height: 7px;
+    flex-shrink: 0;
+    border-radius: 50%;
+}
+
+.status.active {
+    color: var(--success);
+}
+
+.status.active .status-dot {
+    background: var(--success);
+}
+
+.status.pending {
+    color: var(--warning);
+}
+
+.status.pending .status-dot {
+    background: var(--warning);
+}
+
+.status.inactive {
+    color: var(--text-light);
+}
+
+.status.inactive .status-dot {
+    background: #cbd5e1;
+}
+
+.status.cancelled {
+    color: var(--danger);
+}
+
+.status.cancelled .status-dot {
+    background: var(--danger);
+}
+
+
+/* =========================================================
+   12. TABLE ACTIONS
+========================================================= */
+
+.table-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 4px;
+    white-space: nowrap;
+}
+
+.table-action {
+    width: 29px;
+    height: 29px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: #ffffff;
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-size: 11px;
+    transition: var(--transition);
+}
+
+.table-action:hover {
+    border-color: var(--primary);
+    background: var(--primary-light);
+    color: var(--primary);
+}
+
+.table-action.edit:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+.table-action.view:hover {
+    border-color: #0891b2;
+    background: #ecfeff;
+    color: #0891b2;
+}
+
+.table-action.delete:hover {
+    border-color: var(--danger);
+    background: var(--danger-light);
+    color: var(--danger);
+}
+
+.table-action.success:hover {
+    border-color: var(--success);
+    background: var(--success-light);
+    color: var(--success);
+}
+
+
+/* =========================================================
+   13. TABLE PRICE
+========================================================= */
+
+.table-price {
+    color: var(--dark);
+    font-weight: 700;
+    font-size: 10px;
+}
+
+.table-price small {
+    display: block;
+    margin-top: 2px;
+    color: var(--text-light);
+    font-size: 8px;
+    font-weight: 400;
+}
+
+
+/* =========================================================
+   14. TABLE NUMBER
+========================================================= */
+
+.table-number {
+    color: var(--dark);
+    font-size: 10px;
+    font-weight: 600;
+}
+
+.table-number.muted {
+    color: var(--text-secondary);
+}
+
+
+/* =========================================================
+   15. TABLE DATE
+========================================================= */
+
+.table-date {
+    white-space: nowrap;
+}
+
+.table-date strong {
+    display: block;
+    color: var(--text);
+    font-size: 9px;
+    font-weight: 600;
+}
+
+.table-date span {
+    display: block;
+    margin-top: 2px;
+    color: var(--text-light);
+    font-size: 8px;
+}
+
+
+/* =========================================================
+   16. TABLE AMOUNT
+========================================================= */
+
+.table-amount {
+    color: var(--dark);
+    font-size: 10px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.table-amount.positive {
+    color: var(--success);
+}
+
+.table-amount.negative {
+    color: var(--danger);
+}
+
+
+/* =========================================================
+   17. TABLE EMPTY STATE
+========================================================= */
+
+.table-empty {
+    padding: 55px 20px;
+    text-align: center;
+}
+
+.table-empty-icon {
+    width: 52px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 10px;
+    border-radius: 50%;
+    background: var(--background);
+    color: var(--text-light);
+    font-size: 22px;
+}
+
+.table-empty h3 {
+    color: var(--dark);
+    font-size: 12px;
+}
+
+.table-empty p {
+    max-width: 400px;
+    margin: 5px auto 15px;
+    color: var(--text-secondary);
+    font-size: 9px;
+}
+
+
+/* =========================================================
+   18. TABLE LOADING
+========================================================= */
+
+.table-loading {
+    padding: 45px 20px;
+    text-align: center;
+}
+
+.table-spinner {
+    width: 28px;
+    height: 28px;
+    margin: 0 auto 10px;
+    border: 3px solid #dbeafe;
+    border-top-color: var(--primary);
+    border-radius: 50%;
+    animation: tableSpinner 0.7s linear infinite;
+}
+
+@keyframes tableSpinner {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.table-loading span {
+    color: var(--text-secondary);
+    font-size: 9px;
+}
+
+
+/* =========================================================
+   19. TABLE SKELETON
+========================================================= */
+
+.table-skeleton {
+    height: 10px;
+    width: 100%;
+    border-radius: 4px;
+    background: linear-gradient(
+        90deg,
+        #f1f5f9 25%,
+        #e2e8f0 50%,
+        #f1f5f9 75%
+    );
+    background-size: 200% 100%;
+    animation: tableSkeleton 1.4s infinite;
+}
+
+.table-skeleton.short {
+    width: 60%;
+}
+
+.table-skeleton.medium {
+    width: 80%;
+}
+
+@keyframes tableSkeleton {
+    0% {
+        background-position: 200% 0;
+    }
+
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+
+/* =========================================================
+   20. TABLE FOOTER
+========================================================= */
+
+.table-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 12px 18px;
+    border-top: 1px solid var(--border);
+    background: #ffffff;
+}
+
+.table-footer-info {
+    color: var(--text-secondary);
+    font-size: 9px;
+}
+
+
+/* =========================================================
+   21. PAGINATION
+========================================================= */
+
+.pagination {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.pagination-button {
+    width: 29px;
+    height: 29px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: #ffffff;
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-size: 9px;
+    transition: var(--transition);
+}
+
+.pagination-button:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+    background: var(--primary-light);
+}
+
+.pagination-button.active {
+    border-color: var(--primary);
+    background: var(--primary);
+    color: #ffffff;
+}
+
+.pagination-button:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+
+/* =========================================================
+   22. TABLE TOOLBAR
+========================================================= */
+
+.table-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap;
+    padding: 13px 15px;
+    border-bottom: 1px solid var(--border);
+    background: #ffffff;
+}
+
+.table-toolbar-left,
+.table-toolbar-right {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    flex-wrap: wrap;
+}
+
+
+/* =========================================================
+   23. TABLE SEARCH
+========================================================= */
+
+.table-search {
+    position: relative;
+    width: 230px;
+}
+
+.table-search input {
+    width: 100%;
+    height: 34px;
+    padding: 0 10px 0 31px;
+    border: 1px solid var(--border-dark);
+    border-radius: 6px;
+    outline: none;
+    color: var(--text);
+    background: #ffffff;
+    font-size: 9px;
+}
+
+.table-search input:focus {
+    border-color: var(--primary);
+    box-shadow:
+        0 0 0 3px rgba(37, 99, 235, 0.07);
+}
+
+.table-search-icon {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    color: var(--text-light);
+    pointer-events: none;
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   24. TABLE FILTER
+========================================================= */
+
+.table-filter {
+    height: 34px;
+    min-width: 115px;
+    padding: 0 8px;
+    border: 1px solid var(--border-dark);
+    border-radius: 6px;
+    outline: none;
+    background: #ffffff;
+    color: var(--text-secondary);
+    font-size: 9px;
+}
+
+.table-filter:focus {
+    border-color: var(--primary);
+}
+
+
+/* =========================================================
+   25. TABLE EXPORT BUTTON
+========================================================= */
+
+.table-export {
+    height: 34px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 0 10px;
+    border: 1px solid var(--border-dark);
+    border-radius: 6px;
+    background: #ffffff;
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-size: 9px;
+    transition: var(--transition);
+}
+
+.table-export:hover {
+    border-color: var(--primary);
+    background: var(--primary-light);
+    color: var(--primary);
+}
+
+
+/* =========================================================
+   26. STOCK PROGRESS
+========================================================= */
+
+.table-stock {
+    min-width: 80px;
+}
+
+.table-stock-number {
+    color: var(--dark);
+    font-size: 9px;
+    font-weight: 700;
+}
+
+.table-stock-bar {
+    width: 70px;
+    height: 5px;
+    margin-top: 4px;
+    overflow: hidden;
+    border-radius: 10px;
+    background: #f1f5f9;
+}
+
+.table-stock-fill {
+    height: 100%;
+    border-radius: inherit;
+}
+
+.table-stock-fill.high {
+    background: var(--success);
+}
+
+.table-stock-fill.medium {
+    background: var(--warning);
+}
+
+.table-stock-fill.low {
+    background: var(--danger);
+}
+
+
+/* =========================================================
+   27. TABLE CATEGORY
+========================================================= */
+
+.table-category {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    color: var(--text-secondary);
+    font-size: 9px;
+}
+
+.table-category-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--primary);
+}
+
+
+/* =========================================================
+   28. TABLE DOCUMENT NUMBER
+========================================================= */
+
+.document-number {
+    color: var(--primary);
+    font-family: monospace;
+    font-size: 9px;
+    font-weight: 700;
+}
+
+.document-number:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   29. TABLE RESPONSIVE
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .table-card-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .table-card-actions {
+        width: 100%;
+    }
+
+    .table-toolbar {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .table-toolbar-left,
+    .table-toolbar-right {
+        width: 100%;
+    }
+
+    .table-search {
+        flex: 1;
+        width: auto;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .table-card-header {
+        padding: 12px;
+    }
+
+    .table-card-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .table-card-actions button,
+    .table-card-actions select {
+        width: 100%;
+    }
+
+    .table-toolbar-left,
+    .table-toolbar-right {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .table-search {
+        width: 100%;
+    }
+
+    .table-filter {
+        width: 100%;
+    }
+
+    .table-footer {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .pagination {
+        justify-content: center;
+    }
+
+}
+
+
+/* =========================================================
+   END OF TABLES.CSS
+========================================================= */
